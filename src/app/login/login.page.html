@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="cellular-outline" style="margin-left: 8px;"></ion-icon>
+      <ion-icon name="wifi-outline" style="margin-left: 8px;"></ion-icon>
+      <ion-icon name="battery-full-outline" style="margin-left: 8px;"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <!-- Bienvenida -->
+  <ion-card class="hola-card">
+    <ion-card-header>
+      <ion-card-title>HOLA!</ion-card-title>
+      <ion-card-subtitle>Bienvenid&#64;s</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+   <!-- Login -->
+  <ion-card class="login-card">
+    <ion-card-content>
+          <ion-item>
+            <ion-input label="Correo " type="email" placeholder="email@domain.com"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input label="Contraseña" type="password" value="password"></ion-input>
+          </ion-item>
+
+          <div class="login-options">
+            <ion-item lines="none" class="remember-me">
+              <ion-checkbox slot="start"></ion-checkbox>
+              <ion-label>Recordar usuario</ion-label>
+            </ion-item>
+            <div class="forgot-password">
+              <a (click)="onForgotPassword()">¿Olvidaste tu contraseña?</a>
+            </div>
+          </div>
+          
+          <ion-button expand="block" class="ion-margin-top">Iniciar sesión</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+    <!-- Login con redes sociales -->
+  <ion-card class="extra-card"> 
+    <ion-card-header>
+      <ion-card-title>Ingresar con </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+        <ion-buttons>
+            <ion-button>
+              <ion-icon name="logo-google"></ion-icon>
+            </ion-button>
+            <ion-button>
+              <ion-icon name="logo-instagram"></ion-icon>
+            </ion-button>
+            <ion-button>
+              <ion-icon name="logo-facebook"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+          <ion-card-header>
+            <ion-card-title>¿No tienes cuenta?</ion-card-title>
+          </ion-card-header>
+           <ion-card-content>
+              <ion-button expand="block" class="ion-margin-top">Regístrate</ion-button>
+           </ion-card-content>
+    </ion-card-content>
+  </ion-card>
+
+
+            
+
+
+
+

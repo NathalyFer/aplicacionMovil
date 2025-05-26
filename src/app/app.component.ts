@@ -9,3 +9,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   constructor() {}
 }
+
+document.body.setAttribute('color-theme', 'light');
