@@ -1,13 +1,45 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+/* 🔹 Fondo general de la página */
+ion-content {
+  --background: #ffffff;
+  margin: 0;
+  padding: 0;
 }
 
+/* 🔹 Encabezado blanco */
+ion-header, ion-toolbar {
+  --background: #ffffff;
+  color: #000000;
+  --ion-color-base: #ffffff;
+}
+
+/* 🔹 Imagen de fondo que cubre toda la pantalla */
+.full-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  border: none;
+  box-shadow: none;
+  display: block;
+  z-index: -1;
+}
+
+/* 🔹 Contenedor que se centra verticalmente sobre la imagen */
+#container {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  transform: translateY(-50%);
+  z-index: 1; /* Encima de la imagen */
+  padding: 0 20px;
+}
+
+/* 🔹 Texto del contenedor */
 #container strong {
   font-size: 20px;
   line-height: 26px;
@@ -16,12 +48,38 @@
 #container p {
   font-size: 16px;
   line-height: 22px;
-
   color: #8c8c8c;
-
   margin: 0;
 }
 
 #container a {
   text-decoration: none;
+}
+
+/* 🔹 Contenedor de la imagen (ocupa toda la pantalla) */
+.image-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+/* 🔹 Imagen dentro de contenedor (cuando no es fondo completo) */
+img {
+  width: 40%;
+  max-width: 300px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: none;
+}
+
+/* 🔹 Elimina márgenes y relleno globales */
+html, body, ion-app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
