@@ -9,7 +9,7 @@ import { AlertController } from '@ionic/angular';
   standalone: false,
 })
 export class LoginPage {
-  email: string = '';
+  username: string = '';
   password: string = '';
 
   constructor( private router: Router,
@@ -27,24 +27,21 @@ export class LoginPage {
 
     await alert.present();
   }
-  //metodo validar email
-  validarEmail(email: string): boolean {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-  }
+
 
   //metodo login completo
   login() {
-      // Validar que los campo correo no estén vacíos
-      if (!this.email) {
+      // Validar que el campo usuario no esté vacío
+      if (!this.username) {
         this.mostrarAlerta('Por favor, complete todos los campos.');
         return;
       }
-      //validar formato del correo electrónico
-      if (!this.validarEmail(this.email)) {
-        this.mostrarAlerta('Por favor, ingrese un correo electrónico válido.');
+      // Validar que el campo usuario tenga entre 3 y 8 caracteres
+      if (this.username.length < 3 || this.username.length > 8) {
+        this.mostrarAlerta('El usuario debe tener entre 3 y 8 caracteres.');
         return;
       }
+
       // Validar que el campo contraseña no esté vacío
       if (!this.password) {
         this.mostrarAlerta('Por favor, complete todos los campos.');
@@ -59,8 +56,24 @@ export class LoginPage {
   
 
     // Si la autenticación es exitosa, redirigir al usuario
-    this.router.navigate(['/home'], {state: { user: this.email }});
+    this.router.navigate(['/home'], {state: { user: this.username }});
   }
   
 
 }
+
+  //metodo validar email
+  //validarEmail(email: string): boolean {
+    //const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    //return re.test(email);
+ // }
+       // Validar que los campo correo no estén vacíos
+      //if (!this.email) {
+       // this.mostrarAlerta('Por favor, complete todos los campos.');
+       // return;
+     // }
+      //validar formato del correo electrónico
+     // if (!this.validarEmail(this.email)) {
+       // this.mostrarAlerta('Por favor, ingrese un correo electrónico válido.');
+       // return;
+      //}
