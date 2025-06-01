@@ -1,13 +1,19 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Inicio
-    </ion-title>
+    <ion-title>Bienvenido {{user}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="image-container">
-    <img src="https://i.pinimg.com/736x/b0/8e/34/b08e34b76e49829773e6095780def4f9.jpg" alt="Imagen de fondo" class="full-image" />
-  </div>
-</ion-content>
+<ion-content class="ion-padding">
+  <h2>¿Qué deseas hacer?</h2>
+  <mat-card *ngFor="let dron of drones" class="drone-card">
+    <mat-card-header>
+      <mat-card-title>{{dron.name}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{dron.descripcion}}</p>
+      <p>Última ubicación: {{dron.lastLocation}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="viewDroneDetails(dron)">Ver detalles</button>
+    </mat-card-actions>

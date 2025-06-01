@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   standalone: false,
 })
 export class HomePage {
+  user: string = '';
 
   constructor(private router: Router) {}
 
