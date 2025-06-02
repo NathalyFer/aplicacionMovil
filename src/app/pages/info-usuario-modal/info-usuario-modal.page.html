@@ -1,13 +1,15 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>infoUsuarioModal</ion-title>
+    <ion-title>Información Ingresada</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Cerrar</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">infoUsuarioModal</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <p><strong>Nombre:</strong> {{ user }}</p>
+  <p><strong>Apellido:</strong> {{ surname }}</p>
+  <p><strong>Nivel de educación:</strong> {{ educationLevel }}</p>
+  <p><strong>Fecha de nacimiento:</strong> {{ birthDate }}</p>
 </ion-content>

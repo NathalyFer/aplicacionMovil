@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { InfoUsuarioModalPage } from '../pages/info-usuario-modal/info-usuario-modal.page';
+import { ModalController } from '@ionic/angular';
 import {
   trigger,
   state,
@@ -35,7 +37,8 @@ export class HomePage {
 
    animationState = 'start'; // Estado inicial para animación
 
-   constructor(private route: ActivatedRoute) {}
+   constructor(private route: ActivatedRoute,
+    private modalCtrl: ModalController) {}
 
    ngOnInit() {
   this.route.queryParams.subscribe(params => {
@@ -68,12 +71,23 @@ export class HomePage {
 
 
 
-   ionViewDidEnter() {
-    // Redirige a login apenas la vista entra
-    //this.router.navigate(['/login']);
+  // ✅ MÉTODO PARA ABRIR EL MODAL
+  async abrirModal() {
+    const modal = await this.modalCtrl.create({
+      component: InfoUsuarioModalPage,
+      componentProps: {
+        user: this.user,
+        surname: this.surname,
+        educationLevel: this.educationLevel,
+        birthDate: this.birthDate
+      }
+    });
+      await modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+    console.log('Modal cerrado con data:', data, 'y role:', role);
   }
   
-  
 
+  }
 
-}

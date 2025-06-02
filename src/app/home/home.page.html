@@ -27,12 +27,12 @@
        </ion-select>
   </ion-item>
 
-  <ion-item>
+  <ion-item [@slideAnimation]="animationState">
     <ion-label>Fecha de nacimiento:</ion-label>
     <ion-datetime [(ngModel)]="birthDate"></ion-datetime>
   </ion-item>
   <ion-button expand="full" class="ion-margin-top" (click)="limpiar()">Limpiar</ion-button>
-  <ion-button expand="full" class="ion-margin-top" (click)="save()">Mostrar</ion-button>    
+  <ion-button (click)="abrirModal()">Mostrar</ion-button>   
   <ion-button expand="full" class="ion-margin-top" (click)="save()">Guardar</ion-button>
 </ion-content>
   <ion-footer>
