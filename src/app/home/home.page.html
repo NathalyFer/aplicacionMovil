@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <h2>Información personal</h2>
+  <h2 class="section-title">Información personal</h2>
 
   <ion-item [@slideAnimation]="animationState">
     <ion-label>Nombre:</ion-label>
@@ -31,9 +31,11 @@
     <ion-label>Fecha de nacimiento:</ion-label>
     <ion-datetime [(ngModel)]="birthDate"></ion-datetime>
   </ion-item>
-  <ion-button expand="full" class="ion-margin-top" (click)="limpiar()">Limpiar</ion-button>
-  <ion-button (click)="abrirModal()">Mostrar</ion-button>   
-  <ion-button expand="full" class="ion-margin-top" (click)="save()">Guardar</ion-button>
+  <div class="button-row">
+    <ion-button class="btn-green btn-left" (click)="limpiar()">Limpiar</ion-button>
+    <ion-button class="btn-green btn-right" (click)="abrirModal()">Mostrar</ion-button>
+  </div> 
+  
 </ion-content>
   <ion-footer>
     <ion-toolbar>

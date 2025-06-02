@@ -1,85 +1,103 @@
-/* 🔹 Fondo general de la página */
-ion-content {
-  --background: #ffffff;
-  margin: 0;
-  padding: 0;
+:host {
+  --ion-background-color: #e6f7ff;
 }
 
-/* 🔹 Encabezado blanco */
+ion-content {
+  --background: #e6f7ff;
+  padding: 16px;
+}
+
 ion-header, ion-toolbar {
   --background: #ffffff;
-  color: #000000;
-  --ion-color-base: #ffffff;
+  color: #591861;
 }
 
-/* 🔹 Imagen de fondo que cubre toda la pantalla */
-.full-image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
-  border: none;
-  box-shadow: none;
-  display: block;
-  z-index: -1;
-}
-
-/* 🔹 Contenedor que se centra verticalmente sobre la imagen */
-#container {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0077b6;
+  margin: 20px 0 25px 0;
   text-align: center;
-  transform: translateY(-50%);
-  z-index: 1; /* Encima de la imagen */
-  padding: 0 20px;
 }
 
-/* 🔹 Texto del contenedor */
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+/* Ion Items */
+ion-item {
+  --background: #f0f9ff;
+  --border-radius: 15px;
+  --padding-start: 15px;
+  --padding-end: 15px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  --min-height: 60px;
+  margin-bottom: 20px;
+  align-items: center;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  color: #8c8c8c;
-  margin: 0;
+ion-item.item-has-focus {
+  --background: #2a6289;
+  border: 2px solid #48cae4;
+  --border-color: #48cae4;
 }
 
-#container a {
-  text-decoration: none;
+/* Labels */
+ion-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #0077b6;
+  min-width: 140px; /* ancho mínimo para etiquetas */
+  display: inline-block; /* para que respeten el ancho */
+}
+/* Labels específicos en rojo */
+ion-item:nth-child(2) ion-label,  /* Nombre */
+ion-item:nth-child(3) ion-label,  /* Apellido */
+ion-item:nth-child(4) ion-label,  /* Nivel educación */
+ion-item:nth-child(5) ion-label   /* Fecha de nacimiento */
+{
+  color: #61b584; /* rojo */
 }
 
-/* 🔹 Contenedor de la imagen (ocupa toda la pantalla) */
-.image-container {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  border: none;
+/* Inputs, selects and datetime */
+ion-input, ion-select, ion-datetime {
+  --background: transparent;
+  font-size: 1.1rem;
+  color: #4087a8;
 }
 
-/* 🔹 Imagen dentro de contenedor (cuando no es fondo completo) */
-img {
-  width: 40%;
-  max-width: 300px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  border: none;
+/* Buttons */
+ion-button {
+  --border-radius: 12px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 12px;
 }
 
-/* 🔹 Elimina márgenes y relleno globales */
-html, body, ion-app {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+/* Footer */
+ion-footer ion-title {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #4a8aad;
+  font-weight: 500;
+}
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px; /* un poco de separación con lo anterior */
+}
+/* Estilo común para ambos botones */
+.btn-green {
+  --background: #8dc38f; /* Verde */
+  --color: rgb(255, 255, 255);
+  --border-radius: 20px;
+  width: 45%;
+}
+
+.btn-left {
+  /* sin expandir, alineado a la izquierda */
+  border-radius: 50px;
+  width: auto;
+}
+
+.btn-right {
+  /* sin expandir, alineado a la derecha */
+  width: auto;
 }

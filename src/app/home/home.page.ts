@@ -80,7 +80,8 @@ export class HomePage {
         surname: this.surname,
         educationLevel: this.educationLevel,
         birthDate: this.birthDate
-      }
+      },
+      cssClass: 'custom-small-modal' // personalizar tamaño
     });
       await modal.present();
 
