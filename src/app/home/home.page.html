@@ -6,29 +6,32 @@
 
 <ion-content class="ion-padding">
   <h2>Información personal</h2>
-  <ion-item>
+
+  <ion-item [@slideAnimation]="animationState">
     <ion-label>Nombre:</ion-label>
     <ion-input type="text" [(ngModel)]="user"></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item [@slideAnimation]="animationState">
     <ion-label>Apellido:</ion-label>
     <ion-input type="text" [(ngModel)]="surname"></ion-input>
   </ion-item>
+
   <ion-item>
     <ion-label>Nivel educación:</ion-label>
-    <ion-select [(ngModel)]="educationLevel">
-      <ion-select-option value="Basica">Basica</ion-select-option>
-      <ion-select-option value="Media">Media</ion-select-option>
-      <ion-select-option value=" Técnico Profesional ">Tecnico</ion-select-option>
-       <ion-select-option value=" Educación Superior">Superior</ion-select-option>
-      <ion-select-option value="Posgrado">Posgrado</ion-select-option>
-    </ion-select>
-</ion-item>
+        <ion-select [(ngModel)]="educationLevel" interface="popover">
+          <ion-select-option value="Basica">Enseñanza Basica</ion-select-option>
+          <ion-select-option value="Media">Enseñanza Media</ion-select-option>
+          <ion-select-option value="Técnico Profesional">Tecnico</ion-select-option>
+          <ion-select-option value="Educación Superior">Superior</ion-select-option>
+          <ion-select-option value="Posgrado">Posgrado</ion-select-option>
+       </ion-select>
+  </ion-item>
+
   <ion-item>
     <ion-label>Fecha de nacimiento:</ion-label>
-    <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="birthDate"></ion-datetime>
+    <ion-datetime [(ngModel)]="birthDate"></ion-datetime>
   </ion-item>
-  <ion-button expand="full" class="ion-margin-top" (click)="save()">Limpiar</ion-button>
+  <ion-button expand="full" class="ion-margin-top" (click)="limpiar()">Limpiar</ion-button>
   <ion-button expand="full" class="ion-margin-top" (click)="save()">Mostrar</ion-button>    
   <ion-button expand="full" class="ion-margin-top" (click)="save()">Guardar</ion-button>
 </ion-content>

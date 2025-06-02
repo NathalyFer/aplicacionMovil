@@ -56,11 +56,12 @@ export class LoginPage {
   
 
     // Si la autenticación es exitosa, redirigir al usuario
-    this.router.navigate(['/home'], {state: { user: this.username }});
-  }
+    this.router.navigate(['/home'], {
+  queryParams: { user: this.username }
+});
   
 
-}
+}}
 
   //metodo validar email
   //validarEmail(email: string): boolean {
@@ -76,4 +77,4 @@ export class LoginPage {
      // if (!this.validarEmail(this.email)) {
        // this.mostrarAlerta('Por favor, ingrese un correo electrónico válido.');
        // return;
-      //}
+      ///
