@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { InfoUsuarioModalPage } from '../pages/info-usuario-modal/info-usuario-modal.page';
+import { InfoUsuarioModalPage } from '../info-usuario-modal/info-usuario-modal.page';
 import { ModalController } from '@ionic/angular';
 import {
   trigger,
