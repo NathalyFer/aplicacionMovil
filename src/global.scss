@@ -35,6 +35,7 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
   background-image: url('assets/img/fondo.png');
@@ -46,3 +47,8 @@ body {
 ion-content {
   --background: transparent !important;
 }
+ion-header {
+    --background: transparent; /* Fondo transparente */
+    --ion-toolbar-background: transparent; /* Fondo transparente para la toolbar */
+    --ion-toolbar-border-color: transparent; /* Elimina el borde */
+  }
