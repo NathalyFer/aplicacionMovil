@@ -1,0 +1,59 @@
+
+
+<ion-content class="ion-padding">
+  <div class="contenedor-registrarse">
+    <h2 class="section-title">Registrarse!</h2>
+
+    <ion-item [@slideAnimation]="animationState" class="ingreso-datos">
+      <ion-label>Nombre:</ion-label>
+      <ion-input type="text" [(ngModel)]="user"></ion-input>
+    </ion-item>
+    <ion-item [@slideAnimation]="animationState"class="ingreso-datos">
+      <ion-label>Apellido:</ion-label>
+      <ion-input type="text" [(ngModel)]="surname"></ion-input>
+    </ion-item>
+
+    <ion-item class="ingreso-datos">
+      <ion-label>Nivel educación:</ion-label>
+          <ion-select [(ngModel)]="educationLevel" interface="popover">
+            <ion-select-option value="Basica">Enseñanza Basica</ion-select-option>
+            <ion-select-option value="Media">Enseñanza Media</ion-select-option>
+            <ion-select-option value="Técnico Profesional">Tecnico</ion-select-option>
+            <ion-select-option value="Educación Superior">Superior</ion-select-option>
+            <ion-select-option value="Posgrado">Posgrado</ion-select-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha de Nacimiento:</ion-label>
+      <ion-item>
+    
+    <!-- Componente angular material 
+        <mat-form-field>
+          <mat-label>dd/mm/yyyy</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="birthDate" placeholder="Fecha de nacimiento" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
+
+        <mat-form-field appearance="fill">
+          <mat-label>Fecha</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" placeholder="Fecha de nacimiento" name ="fecha" required>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </ion-item>
+    </ion-item>/*
+
+
+
+       <div class="button-row">
+        <ion-button class="btn-green btn-left" (click)="limpiar()">Limpiar</ion-button>
+        <ion-button class="btn-green btn-right" (click)="abrirModal()">Mostrar</ion-button>
+       </div> 
+
+      <div class =guardar>
+        <ion-button class="btn-green btn-guardar" (click)="guardar()">Guardar</ion-button>
+      </div>
+  </div>
+</ion-content>
+

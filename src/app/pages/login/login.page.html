@@ -1,69 +1,57 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-    <ion-buttons slot="end">
-      <ion-icon name="cellular-outline" style="margin-left: 8px;"></ion-icon>
-      <ion-icon name="wifi-outline" style="margin-left: 8px;"></ion-icon>
-      <ion-icon name="battery-full-outline" style="margin-left: 8px;"></ion-icon>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+
+<ion-content [fullscreen]="true" >
+<div class="ion-padding">
   <!-- Bienvenida -->
-  <ion-card class="hola-card">
-    <ion-card-header>
-      <ion-card-title>HOLA!</ion-card-title>
-      <ion-card-subtitle>Bienvenid&#64;s</ion-card-subtitle>
-    </ion-card-header>
-  </ion-card>
+    
+        <div class="fondo">
+          <img src="assets/img/logo.png" alt="Logo" class="logo">
+        </div>
+ 
+  
 
-   <!-- Login -->
-  <ion-card class="login-card">
-    <ion-card-content>
-          <ion-item>
-            <ion-input label="Usuario" type="text" placeholder="Ingresa tu usuario" [(ngModel)]="username"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input label="Contraseña" type="password" placeholder="••••" [(ngModel)]="password" ></ion-input>
-          </ion-item>
+      <!-- Login -->
+      <ion-card class="login-card">
+        <ion-card-content>
+              <ion-item>
+                <ion-input label="Usuario" type="text" placeholder="Ingresa tu usuario" [(ngModel)]="username"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input label="Contraseña" type="password" placeholder="••••" [(ngModel)]="password" ></ion-input>
+              </ion-item>
 
-          <div class="login-options">
-            <ion-item lines="none" class="remember-me">
-              <ion-checkbox slot="start"></ion-checkbox>
-              <ion-label>Recordar usuario</ion-label>
-            </ion-item>
-          </div>
-          
-          <ion-button expand="block" class="ion-margin-top" (click)="login()">Ingresar</ion-button>
-    </ion-card-content>
-  </ion-card>
-
-    <!-- Login con redes sociales -->
-  <ion-card class="extra-card"> 
-    <ion-card-header>
-      <ion-card-title>Ingresar con </ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-        <ion-buttons>
-            <ion-button>
-              <ion-icon name="logo-google"></ion-icon>
-            </ion-button>
-            <ion-button>
-              <ion-icon name="logo-instagram"></ion-icon>
-            </ion-button>
-            <ion-button>
-              <ion-icon name="logo-facebook"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-          <ion-card-header>
-            <ion-card-title>¿No tienes cuenta?</ion-card-title>
-          </ion-card-header>
-           <ion-card-content>
-              <ion-button expand="block" class="ion-margin-top">Regístrate</ion-button>
-           </ion-card-content>
-    </ion-card-content>
-  </ion-card>
+              <div class="login-options">
+                <ion-item lines="none" class="remember-me">
+                  <ion-checkbox slot="start"></ion-checkbox>
+                  <ion-label>Recordar usuario</ion-label>
+                </ion-item>
+              </div>
+              
+              <ion-button expand="block" class="ion-margin-top btn-ingresar" (click)="login()">Ingresar</ion-button>
+      
+          <!-- Login con redes sociales -->
+    
+            <ion-text class="ion-margin-top"><h2>Ingresar con: </h2></ion-text>
+            <div class="social-buttons" style="display: flex; gap: 10px; justify-content: center; margin-top: 10px;">
+                <ion-button fill="clear">
+                  <ion-icon name="logo-google"></ion-icon>
+                </ion-button>
+                <ion-button>
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </ion-button>
+                <ion-button>
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </ion-button>
+            </div>
+            <!--registro-->
+                  <div class="registro-link" style="text-align: center; margin-top: 20px;">
+                  <ion-text>¿No tienes cuenta? <span class="registro-btn" style="color: var(--ion-color-primary); cursor: pointer;" (click)="registrarse()">Regístrate</span></ion-text>
+                  <ion-text> Recuperar contraseña <span class="recuperar-btn" style="color: var(--ion-color-primary); cursor: pointer;" (click)="recuperar()">aquí</span></ion-text>
+                  </div>
+        </ion-card-content>
+      </ion-card>
+  </div>
+  </ion-content>
 
 
             

@@ -1,5 +1,6 @@
 /*  FONDO Y ESTRUCTURA GENERAL
  */
+ 
 :root {
   color-scheme: light;
   --ion-background-color: #e6f7ff;
@@ -16,7 +17,8 @@ html, body, ion-app {
 }
 
 ion-content {
-  --background: #e6f7ff;
+  --background: none;;
+  background-repeat: no-repeat; 
   --padding-top: 10px;
   --padding-bottom: 10px;
   --padding-start: 10px;
@@ -58,7 +60,7 @@ ion-header, ion-toolbar {
 
 /* FORMULARIO */
 ion-item {
-  --background: #f0f9ff;
+  --background: #f5f5f5;
   --border-radius: 15px;
   --padding-start: 15px;
   --padding-end: 15px;
@@ -118,7 +120,7 @@ ion-button {
   max-width: none;
   padding-left: 10px;
   padding-right: 10px;
-  font-size: 0.95rem;
+  font-size: 10rem;
   --padding-top: 12px;
   --padding-bottom: 12px;
   --border-radius: 8px;
@@ -220,18 +222,22 @@ ion-card-title {
 
 .remember-me {
   --background: transparent;
+  color: #4caf50;
   --border-radius: 0;
   --inner-padding-end: 0;
   --padding-start: 0;
   --min-height: 24px;
   margin: 0;
 
-  ion-checkbox {
+ ion-checkbox {
     --size: 20px;
+    --border-radius: 4px;
     --background: #f0f9ff;
     --border-color: #48cae4;
-    --border-radius: 4px;
     --checkmark-color: #80d687;
+    --checked-background: #f0f9ff;  // ✅ forzado para cuando está marcado
+    --unchecked-background: #f0f9ff; // ✅ forzado para cuando NO está marcado
+    --checkmark-width: 2px;
     margin-right: 8px;
   }
 
@@ -254,4 +260,38 @@ ion-card-title {
     --color: #2d96b9;
     text-decoration: underline;
   }
+}
+.registro-link ion-text {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  cursor: pointer;
+  text-decoration: underline; // opcional, si querés que parezca link
+}
+
+.logo{
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+  animation: zoomInOut 1s ease-in-out;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+@keyframes zoomInOut {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.btn-ingresar {
+  font-size: 1.3rem; /* Ajustá el tamaño como quieras */
+  font-weight: bold;
 }

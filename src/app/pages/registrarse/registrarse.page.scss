@@ -1,0 +1,105 @@
+:host {
+  --ion-background-color: #e6f7ff;
+}
+
+ion-content {
+  --background: #e6f7ff;
+  padding: 16px;
+}
+
+ion-header, ion-toolbar {
+  --background: #ffffff;
+  color: #591861;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0077b6;
+  margin: 20px 0 25px 0;
+  text-align: center;
+}
+
+/* Ion Items */
+.ingreso-datos {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  --background: #eddce1;
+  --border-radius: 15px;
+  --padding-start: 15px;
+  --padding-end: 15px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  --min-height: 60px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+ion-item.item-has-focus {
+  --background: #2a6289;
+  border: 2px solid #48cae4;
+  --border-color: #48cae4;
+}
+
+/* Labels */
+ion-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #0077b6;
+  min-width: 140px; /* ancho mínimo para etiquetas */
+  display: inline-block; /* para que respeten el ancho */
+}
+/* Labels específicos en rojo */
+ion-item:nth-child(2) ion-label,  /* Nombre */
+ion-item:nth-child(3) ion-label,  /* Apellido */
+ion-item:nth-child(4) ion-label,  /* Nivel educación */
+ion-item:nth-child(5) ion-label   /* Fecha de nacimiento */
+{
+  color: #61b584; /* rojo */
+}
+
+/* Inputs, selects and datetime */
+ion-input, ion-select, ion-datetime {
+  --background: transparent;
+  font-size: 1.1rem;
+  color: #4087a8;
+}
+
+/* Buttons */
+ion-button {
+  --border-radius: 12px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+/* Footer */
+ion-footer ion-title {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #4a8aad;
+  font-weight: 500;
+}
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px; /* un poco de separación con lo anterior */
+}
+/* Estilo común para ambos botones */
+.btn-green {
+  --background: #8dc38f; /* Verde */
+  --color: rgb(255, 255, 255);
+  --border-radius: 20px;
+  width: 45%;
+}
+
+.btn-left {
+  /* sin expandir, alineado a la izquierda */
+  border-radius: 50px;
+  width: auto;
+}
+
+.btn-right {
+  /* sin expandir, alineado a la derecha */
+  width: auto;
+}

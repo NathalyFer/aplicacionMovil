@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
   styleUrls: ['./inicio.page.scss'],
-  standalone: true,
-  imports: [IonicModule]
+  standalone: false,
 })
 export class InicioPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+        setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 3000); // Redirige a login luego de 3 segundos
+  }
   }
 
-}
+

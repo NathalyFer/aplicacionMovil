@@ -1,0 +1,24 @@
+
+<ion-content class="ion-padding">
+
+  <div class="contenedor-recuperar">
+      <h1 class="titulo-recuperar">Recuperar Contraseña</h1>
+      <p class="hola-subtitle">Ingresa tu RUT y correo electrónico para recuperar el acceso</p>
+      
+      <form (ngSubmit)="recuperar()">
+            <!-- Campo RUT -->
+            <ion-item >
+              <ion-label position="stacked">RUT:</ion-label>
+              <ion-input type="text" [(ngModel)]="rut" name="rut" placeholder="12345678-9" required></ion-input>
+            </ion-item>
+            <!-- Campo Email -->
+            <ion-item>
+              <ion-label position="stacked">EMAIL:</ion-label>
+              <ion-input type="email" [(ngModel)]="email" name="email" placeholder="email@dominio.com" required></ion-input>
+            </ion-item>
+
+            <!-- Botón de envío -->
+            <ion-button expand="full" type="submit" class="login-button">Enviar enlace</ion-button>
+       </form>
+    </div>
+  

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -13,8 +14,15 @@ export class LoginPage {
   password: string = '';
 
   constructor( private router: Router,
-                private alertController: AlertController
-  ) { }
+                private alertController: AlertController) { }
+  
+  registrarse() {
+    this.router.navigate(['/registrarse']);
+  }
+
+  recuperar() {
+    this.router.navigate(['/recuperar']); 
+  }
 
   
   //metodo para mostrar alerta
@@ -52,6 +60,7 @@ export class LoginPage {
         this.mostrarAlerta('La contraseña debe tener 4 caracteres.');
         return;
       }
+
   
   
 
@@ -59,12 +68,17 @@ export class LoginPage {
     this.router.navigate(['/home'], {
   queryParams: { user: this.username }
 });
-  
+
 
 }}
 
-  //metodo validar email
-  //validarEmail(email: string): boolean {
+
+function recuperar() {
+  throw new Error('Function not implemented.');
+}
+// function recuperar() {
+//   throw new Error('Function not implemented.');
+// }
     //const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     //return re.test(email);
  // }
