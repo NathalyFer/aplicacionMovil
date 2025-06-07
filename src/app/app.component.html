@@ -1,5 +1,5 @@
 <ion-app>
-  <ion-menu contentId="main-content"type="overlay" menuId="mainMenu">
+  <ion-menu contentId="main-content" type="overlay" menuId="mainMenu" class="custom-menu">
     <ion-header>
       <ion-toolbar>
         <ion-title>Menú</ion-title>
@@ -30,8 +30,6 @@
     </ion-content>
   </ion-menu>
   
-    <div id="main-content">
-      <ion-router-outlet></ion-router-outlet>
-    </div>
-
+ <ion-router-outlet id="main-content"></ion-router-outlet>
 </ion-app>
+

@@ -1,67 +1,229 @@
-.custom-small-modal .modal-wrapper {
-  --width: 90%;
-  --max-width: 400px;
-  --height: auto;
-  --max-height: 70%;
-  border-radius: 20px;
-  box-shadow: transparent;
-}
-/* estilos menu lateral */
-/* Fondo transparente para el menú */
-ion-menu {
-  --background: transparent;
-  background-image: url('/assets/img/fondo.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  --ion-background-color: transparent;
-  backdrop-filter: blur(4px);
+/* --- Menú lateral personalizado --- */
+ion-menu.custom-menu {
+  --ion-background-color: rgba(255, 255, 255, 0.85); /* Fondo semitransparente blanco */
+  backdrop-filter: blur(6px); /* Efecto desenfoque */
+  color: #3dc3b5;
 }
 
-/* Encabezado del menú */
-ion-menu ion-header,
-ion-menu ion-toolbar {
+/* Fondo transparente para contenido y listas dentro del menú */
+ion-menu.custom-menu ion-content,
+ion-menu.custom-menu ion-list {
+  --ion-background-color: transparent;
+  background-color: transparent !important;
+}
+
+/* ion-item transparente y estilizado */
+ion-menu.custom-menu ion-item {
+  --ion-background-color: transparent;
+  background-color: transparent !important;
+  --color: #2aa39f;
+  color: #28aca6 !important;
+  font-weight: bold;
+  margin: 6px 12px;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+  --border-color: transparent !important;
+  --inner-border-width: 0 !important;
+}
+
+/* ion-item interno (shadow DOM) */
+ion-menu.custom-menu ion-item::part(native) {
+  background-color: transparent !important;
+  --background: transparent !important;
+  color: #4e85ac !important;
+  border: none !important;
+}
+
+/* Hover y activo para ion-item */
+ion-menu.custom-menu ion-item:hover,
+ion-menu.custom-menu ion-item.activated,
+ion-menu.custom-menu ion-item:hover::part(native),
+ion-menu.custom-menu ion-item.activated::part(native) {
+  background-color: rgba(87, 25, 91, 0.15) !important;
+}
+
+/* Iconos del menú */
+ion-menu.custom-menu ion-icon {
+  color: #229e85 !important;
+  transition: color 0.3s ease;
+}
+
+/* --- Ion-card estilo transparente con desenfoque --- */
+ion-card {
+  background-color: rgba(182, 104, 143, 0.959); /* Fondo semitransparente */
+  backdrop-filter: blur(5px); /* Desenfoque */
+  box-shadow: none;
+  border-radius: 8px;
+  margin: 10% auto;
+  width: 90%;
+  color: #b5729f;
+  font-weight: 600;
+}
+
+/* Inputs dentro de ion-card con estilo transparente */
+ion-card ion-input,
+ion-card input,
+ion-card ion-select,
+ion-card select {
   --background: transparent;
-  background: transparent;
- --ion-color-base: transparent;
-  color: #57195b;
+  background-color: transparent !important;
+  color: rgb(190, 107, 144);
+  border-bottom: 1px solid rgba(169, 77, 125, 0.984);
+}
+
+/* Labels y items dentro de ion-card */
+ion-card ion-label,
+ion-card label,
+ion-card ion-item {
+  --background: transparent;
+  color: #21a1a1;
+}
+
+/* Botones estilizados */
+ion-card ion-button {
+  --background: #78d79b;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+ion-card ion-button:hover {
+  --background: #5fb67a;
+}
+
+/* Contenedores generales */
+.transparent-header {
+  --background: transparent;
+  --ion-background-color: transparent;
+  background: transparent !important;
+  box-shadow: none;
+}
+
+/* Arreglar el header del menú para que no quede blanco y sea visible */
+ion-menu.custom-menu ion-header,
+ion-menu.custom-menu ion-toolbar {
+  --background: rgba(215, 141, 168, 0.975) !important; /* Fondo púrpura semitransparente */
+  background-color: rgba(202, 104, 160, 0.963) !important;
+  color: #ffffff !important; /* Texto blanco para contraste */
   font-weight: bold;
   text-align: center;
+  box-shadow: none !important;
 }
 
 /* Título del menú */
-ion-menu ion-title {
-  color: #57195b;
+ion-menu.custom-menu ion-title {
+  color: #ffffff !important;
   font-size: 1.5em;
-  
 }
 
-
-
-/* Estilo para los ítems del menú */
-ion-menu ion-item {
+/* Fondo transparente para ion-content general */
+ion-content {
   --background: transparent;
-  color: #877189;
-  font-weight: 500;
-  font-size: 1.1em;
-  border-radius: 12px;
-  margin: 4px 12px;
-  backdrop-filter: blur(4px);
-  transition: background-color 0.2s ease-in-out;
+  background: transparent !important;
 }
 
-
-
-/* Íconos del menú */
-ion-menu ion-icon {
-  color: #21a1a1;
-  font-size: 1.3em;
-  margin-right: 8px;
+/* Logo container */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20%;
 }
 
-/* Estilo especial para "Cerrar sesión" */
-ion-menu ion-item {
-  color: transparent;
-  background: transparent;
+/* Logo imagen */
+.login-container img {
+  width: 70%;
+}
+
+/* Filas de botones */
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10%;
+  margin: 15px 0;
+  font-size: 1.2em;
+  border-radius: 10px;
+}
+
+/* Botones verdes */
+.btn-green {
+  --background: #28a745;
+  color: white;
+  width: 50%;
+  border-radius: 8px;
+}
+
+.btn-left {
+  justify-content: flex-start;
+}
+
+.btn-right {
+  justify-content: flex-end;
+}
+
+.guardar {
+  padding: 0;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.btn-guardar {
+  --background: #28a745;
+  color: white;
   font-weight: bold;
+  margin-bottom: 15px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Títulos centrados */
+.center-title {
+  margin: 0 auto;
+  text-align: center;
+  color: #b9609b;
+  font-weight: bold;
+  font-size: 1.7em;
+  padding-top: 15px;
+}
+
+/* Botón personalizado para retroceder */
+.custom-back-button {
+  --color: #57195b;
+  --background: transparent;
+  font-size: 2em;
+  padding-top: 15px;
+}
+
+/* Material form fields transparent */
+mat-form-field,
+mat-form-field .mat-form-field-flex,
+mat-form-field .mat-form-field-infix,
+input[matInput],
+mat-datepicker-toggle {
+  background-color: transparent !important;
+  color: #3b96a2 !important;
+}
+
+/* Hover y foco para inputs */
+ion-card ion-input:focus,
+ion-card ion-select:focus,
+input[matInput]:focus {
+  border-bottom-color: #57195b !important;
+  color: #57195b !important;
+}
+
+/* Transiciones suaves */
+ion-card ion-input,
+ion-card ion-select,
+ion-card ion-button,
+ion-menu.custom-menu ion-item {
+  transition: all 0.3s ease;
+}
+
+/* Para toda la app, forzar modo claro */
+body:not(.dark) {
+  background-color: #fff !important;
+  color: #57195b !important;
 }

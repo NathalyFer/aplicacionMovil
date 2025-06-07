@@ -27,6 +27,22 @@ const routes: Routes = [
     path: 'recuperar',
     loadChildren: () => import('./pages/recuperar/recuperar.module').then( m => m.RecuperarPageModule)
   },
+  {
+    path: 'catalogo',
+    loadChildren: () => import('./pages/catalogo/catalogo.module').then( m => m.CatalogoPageModule)
+  },
+  {
+    path: 'cocina',
+    loadChildren: () => import('./pages/cocina/cocina.module').then( m => m.CocinaPageModule)
+  },
+  {
+    path: 'banio',
+    loadChildren: () => import('./pages/banio/banio.module').then( m => m.BanioPageModule)
+  },
+  {
+    path: 'habitacion',
+    loadChildren: () => import('./pages/habitacion/habitacion.module').then( m => m.HabitacionPageModule)
+  },
 
 
 

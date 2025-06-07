@@ -7,7 +7,8 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class AppComponent {
-  constructor() {}
+  constructor() {
+    // 🔽 Forzar modo claro eliminando clase 'dark'
+    document.body.classList.remove('dark');
+  }
 }
-
-document.body.setAttribute('color-theme', 'light');
