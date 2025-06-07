@@ -4,5 +4,64 @@
   --height: auto;
   --max-height: 70%;
   border-radius: 20px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: transparent;
+}
+/* estilos menu lateral */
+/* Fondo transparente para el menú */
+ion-menu {
+  --background: transparent;
+  background-image: url('/assets/img/fondo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  --ion-background-color: transparent;
+  backdrop-filter: blur(4px);
+}
+
+/* Encabezado del menú */
+ion-menu ion-header,
+ion-menu ion-toolbar {
+  --background: transparent;
+  background: transparent;
+ --ion-color-base: transparent;
+  color: #57195b;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Título del menú */
+ion-menu ion-title {
+  color: #57195b;
+  font-size: 1.5em;
+  
+}
+
+
+
+/* Estilo para los ítems del menú */
+ion-menu ion-item {
+  --background: transparent;
+  color: #877189;
+  font-weight: 500;
+  font-size: 1.1em;
+  border-radius: 12px;
+  margin: 4px 12px;
+  backdrop-filter: blur(4px);
+  transition: background-color 0.2s ease-in-out;
+}
+
+
+
+/* Íconos del menú */
+ion-menu ion-icon {
+  color: #21a1a1;
+  font-size: 1.3em;
+  margin-right: 8px;
+}
+
+/* Estilo especial para "Cerrar sesión" */
+ion-menu ion-item {
+  color: transparent;
+  background: transparent;
+  font-weight: bold;
 }

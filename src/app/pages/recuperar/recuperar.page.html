@@ -1,5 +1,14 @@
 
-<ion-content class="ion-padding">
+<ion-header [translucent]="true" class="transparent-header">
+  <ion-toolbar>
+    <!-- boton de retroceso -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login" class="custom-back-button"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding"> 
 
   <div class="contenedor-recuperar">
       <h1 class="titulo-recuperar">Recuperar Contraseña</h1>
@@ -21,4 +30,5 @@
             <ion-button expand="full" type="submit" class="login-button">Enviar enlace</ion-button>
        </form>
     </div>
+</ion-content>
   

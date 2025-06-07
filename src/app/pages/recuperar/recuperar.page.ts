@@ -43,7 +43,7 @@ export class RecuperarPage implements OnInit {
 
     // Aquí puedes agregar la lógica para recuperar la contraseña
     console.log('Recuperar contraseña para:', { rut: this.rut, email: this.email });
-    await this.mostrarAlerta('Contraseña recuperada exitosamente.');
+    await this.mostrarAlerta('Link de recuperación enviado exitosamente a su email.');
     this.limpiar(); // Limpia los campos del formulario después de recuperar
   }
   // Método para limpiar los campos del formulario

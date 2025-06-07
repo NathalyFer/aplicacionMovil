@@ -55,7 +55,7 @@ ion-input {
 .login-button {
   --background: #78d1b2;
   --color: #fff;
-  --border-radius: 50px;
+  --border-radius: 100px;
   --box-shadow: 0 4px 8px rgba(72, 202, 228, 0.3);
   --padding-top: 20px;
   --padding-bottom: 20px;
@@ -63,4 +63,11 @@ ion-input {
   font-weight: bold;
   margin-top: 15px;
   text-transform: none;
+}
+.custom-back-button {
+  --color: #57195b; 
+  --background: transparent; /* Fondo transparente */
+  font-size: 2em; /* Tamaño de fuente más grande */
+  padding-top: 13px; /* Ajusta el padding superior */
+  padding-bottom: 13px; /* Ajusta el padding inferior */
 }

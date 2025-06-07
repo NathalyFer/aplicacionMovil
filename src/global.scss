@@ -60,3 +60,15 @@ ion-header {
   --border-radius: 15px;
   --background: transparent;
 }
+ion-item {
+  --color: #333;
+  font-size: 1.1rem;
+}
+
+ion-item:hover {
+  background-color: #f0f0f0;
+}
+
+ion-icon {
+  color: #78d1b2;
+}
