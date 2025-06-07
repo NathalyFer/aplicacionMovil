@@ -1,9 +1,37 @@
+
+
 <ion-header [translucent]="true" class="transparent-header">
   <ion-toolbar>
+    <!-- boton de retroceso -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login" class="custom-back-button"></ion-back-button>
+    </ion-buttons>
+
+    <!-- Título centrado opcional -->
+    <ion-title style="text-align: center;">Bienvenid&#64;s!</ion-title>
+
       <!-- Botón de menú a la derecha-->
-      <ion-buttons slot="end">
+      <ion-buttons slot="end" class="menu-button">
         <ion-menu-button menu="mainMenu"></ion-menu-button>
-      </ion-buttons>
-  </ion-toolbar>
+      </ion-buttons> 
+    </ion-toolbar>
 </ion-header> 
 
+<ion-content [fullscreen]="true" class="ion-padding"> 
+
+ <!-- Imagen de usuario y mensaje de bienvenida -->
+  <div class="user-info">
+    <img src="../../assets/img/usuaria.png" alt="User Avatar" class="avatar" />
+    <h1>¡Hola, {{ username }}! </h1>
+    <p>Encuentra los mejores productos para organizar tu hogar.</p>
+  </div>
+
+  <!-- productos destacados -->
+ <swiper [config]="slideOpts" [pagination]="true">
+  <ng-template swiperSlide *ngFor="let product of featuredProducts">
+    <img [src]="product.image" alt="{{ product.name }}" />
+    <h3>{{ product.name }}</h3>
+    <p>{{ product.price | currency }}</p>
+    <ion-button expand="block" (click)="goToProduct(product.id)">Ver producto</ion-button>
+  </ng-template>
+</swiper>

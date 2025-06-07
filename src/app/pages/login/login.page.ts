@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -66,7 +68,7 @@ export class LoginPage {
 
     // Si la autenticación es exitosa, redirigir al usuario
     this.router.navigate(['/home'], {
-  queryParams: { user: this.username }
+  queryParams: { username: this.username }
 });
 
 
