@@ -1,18 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Información Ingresada</ion-title>
+    <ion-title class="titulo-modal">Información Ingresada</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="close()">Cerrar</ion-button>
+      <ion-button (click)="close()"class="custom-back-button">Cerrar</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <p><strong>Nombre:</strong> {{ nombre }}</p>
-  <p><strong>Apellido:</strong> {{ apellido }}</p>
-  <p><strong>Correo:</strong> {{ email }}</p>
-  <p><strong>Usuario:</strong> {{ usuario }}</p>
-  <p><strong>Contraseña:</strong> {{ password }}</p>
-  <p><strong>Nivel de educación:</strong> {{ educationLevel }}</p>
-  <p><strong>Fecha de nacimiento:</strong> {{ selectedDate }}</p>
-</ion-content>
+
+    <div class="modal-box">
+      <p><strong>Nombre:</strong> {{ nombre }}</p>
+      <p><strong>Apellido:</strong> {{ apellido }}</p>
+      <p><strong>Correo:</strong> {{ email }}</p>
+      <p><strong>Usuario:</strong> {{ usuario }}</p>
+      <p><strong>Contraseña:</strong> {{ password }}</p>
+      <p><strong>Nivel de educación:</strong> {{ educationLevel }}</p>
+      <p><strong>Fecha de nacimiento:</strong> {{ selectedDate }}</p>
+    </div>
+  </ion-content>
+

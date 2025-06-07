@@ -65,8 +65,11 @@ export class RegistrarsePage  {
         password: this.password,
         educationLevel: this.educationLevel,
         selectedDate: this.selectedDate
-      }
-    });
+      },
+      cssClass: 'modal-card'
+});
+
+    await modal.present();
   }
   guardar() {
     // Aquí puedes agregar la lógica para guardar los datos del formulario

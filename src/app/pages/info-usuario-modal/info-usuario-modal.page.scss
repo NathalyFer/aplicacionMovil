@@ -1,72 +1,96 @@
-/* FONDO Y ESTRUCTURA GENERAL */
-:root {
-  --ion-background-color: #e6f7ff;
-  --ion-text-color: #0077b6;
-  --ion-toolbar-background: #c7eeff;
-  --ion-toolbar-color: #0077b6;
-  --ion-item-background: #ffffff;
-}
-.custom-small-modal .modal-wrapper {
-  --width: 90%;
-  --max-width: 100px;
-  --height: auto;
-  --max-height: 60%;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-html, body, ion-app {
+:host {
+  display: block;
   height: 100%;
-  margin: 0;
-  padding: 0;
+  background-image: url('/assets/img/fondo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-ion-content {
-  --background: #e6f7ff;
-  --padding-top: 10px;
-  --padding-bottom: 10px;
-  --padding-start: 10px;
-  --padding-end: 10px;
-  margin: 0;
-  padding: 0;
+ion-modal {
+  --background: transparent;
 }
 
-/* ENCABEZADO */
-ion-header, ion-toolbar {
-  --background: #ffffff;
-  --ion-color-base: #ffffff;
-  color: #000000;
+ion-header {
+  --background: transparent;
+  --ion-toolbar-background: transparent;
+  --ion-toolbar-border-color: transparent;
 }
 
-/* TITULO PRINCIPAL */
-ion-title {
-  font-size: 1.5rem;
-  color: #0077b6;
-  font-weight: bold;
+.transparent-header {
+  background: transparent !important;
+  box-shadow: none;
+}
+
+ion-toolbar {
   text-align: center;
-  padding: 10px 0;
 }
 
-/* CONTENIDO */
-ion-content p {
-  font-size: 1.2rem;
-  color: #0077b6;
+ion-title.center-title {
+  color: #57195b;
+  font-weight: bold;
+  font-size: 1.7em;
+  padding-top: 15px;
+}
+
+.custom-back-button {
+  --color: #57195b;
+  --background: transparent;
+  font-size: 1em;
+  padding-top: 15px;
+}
+
+/* Estilo de la tarjeta dentro del modal */
+ion-card {
+  background-color: transparent;
+  backdrop-filter: blur(5px);
+  box-shadow: none;
+  border-radius: 5%;
+  margin: 10% auto;
+  width: 90%;
+}
+
+.modal-box {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  max-width: 600px;
+  margin: 20px auto;
+  backdrop-filter: blur(4px);
+  color: #333;
+}
+
+/* Estilo del contenido de texto */
+.modal-box p {
+  font-size: 1.1em;
+  color: rgb(122, 40, 163);
   margin-bottom: 10px;
 }
 
-ion-content strong {
-  font-weight: bold;
-  color: #0077b6;
+.modal-box strong {
+  color: #21a1a1;
 }
 
-/* BOTÓN CERRAR */
-ion-button {
-  --background: #0077b6;
-  --color: white;
-  --border-radius: 12px;
-  --padding-start: 20px;
-  --padding-end: 20px;
-  margin-top: 20px;
-  display: block;
-  width: 100%;
+/* Responsivo */
+@media (max-width: 600px) {
+  .modal-box {
+    margin: 10px;
+    padding: 16px;
+  }
+
+  ion-title.center-title {
+    font-size: 1.3em;
+  }
+
+  .modal-box p {
+    font-size: 1em;
+  }
+}
+.titulo-modal {
+  color: #57195b; // Cambialo por cualquier color que quieras
+  font-weight: bold;
+  font-size: 1.1m;
 }

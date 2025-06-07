@@ -24,7 +24,7 @@ ion-content {
   }
 
   .login-container img {
-    width: 60%;  
+    width: 70%;  
   }
 
   ion-card ion-input {
@@ -54,10 +54,43 @@ ion-content {
     color: #21a1a1; 
   }
   
-  ion-card ion-button.login-button {
-    --background: #21a1a1; /* Fondo en naranja oscuro */
-    color: white; /* Texto en blanco para buen contraste */
-  }
+ 
+  .button-row {
+  display: flex;
+  justify-content: space-between; /* separa uno a la izquierda y otro a la derecha */
+  padding: 0 10%; /* opcional: agrega espacio desde los bordes */
+  margin-top: 15px; /* espacio superior */
+  margin-bottom: 15px; /* espacio inferior */
+  font-size: 1.2em; /* tamaño de fuente */
+  border-radius: 10px; /* bordes redondeados */
+}
+
+.btn-green {
+  --background: #28a745; /* verde */
+  color: rgb(255, 255, 255);
+  width: 50%; /* ajusta si querés botones más angostos o anchos */
+}
+
+.btn-left {
+  justify-content: flex-start;
+}
+
+.btn-right {
+  justify-content: flex-end;
+}
+.guardar {
+  padding: 0; /* igual que .button-row para alinearlo visualmente */
+  margin-top: 20px;
+  width: 100%; /* ocupa todo el ancho del contenedor */
+}
+
+.btn-guardar {
+  --background: #28a745; /* mismo verde que los otros */
+  color: white;
+  font-weight: bold;
+  margin-bottom: 15px; /* espacio inferior */
+  width: 100%; /* ocupa todo el ancho del contenedor */
+}
 
 
   ion-card ion-select {

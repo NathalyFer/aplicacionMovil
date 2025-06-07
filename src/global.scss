@@ -37,7 +37,7 @@
 @import "@ionic/angular/css/palettes/dark.system.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-body {
+ion-app {
   background-image: url('assets/img/fondo.png');
   background-size: cover;
   background-position: center;
@@ -52,3 +52,11 @@ ion-header {
     --ion-toolbar-background: transparent; /* Fondo transparente para la toolbar */
     --ion-toolbar-border-color: transparent; /* Elimina el borde */
   }
+  /* Estilo para ion-modal */
+  .custom-modal {
+  --width: 80%;
+  --height: auto;
+  --max-height: 80%;
+  --border-radius: 15px;
+  --background: transparent;
+}
