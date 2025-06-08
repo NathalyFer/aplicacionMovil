@@ -8,23 +8,23 @@
 
     <ion-content>
         <ion-list>
-        <ion-item routerLink="/home">
+        <ion-item (click)="navegarYcerrar('/home')">
           <ion-icon name="person-outline" slot="start"></ion-icon> Mi cuenta</ion-item>
-        <ion-item routerLink="/catalogo">
+        <ion-item (click)="navegarYcerrar('/catalogo')">
           <ion-icon name="settings-outline" slot="start"></ion-icon> Catálogo</ion-item>
-        <ion-item routerLink="/cocina">
+        <ion-item (click)="navegarYcerrar('/cocina')">
           <ion-icon name="restaurant-outline" slot="start"></ion-icon> Cocina</ion-item>
-        <ion-item routerLink="/banio">
+        <<ion-item (click)="navegarYcerrar('/banio')">
           <ion-icon name="water-outline" slot="start"></ion-icon> Baño</ion-item>
         <!---item routerLink="/jardin">
           <ion-icon name="leaf-outline" slot="start"></ion-icon> Jardín</ion-item>-->
-        <ion-item routerLink="/habitacion">
+        <ion-item (click)="navegarYcerrar('/habitacion')">
           <ion-icon name="bed-outline" slot="start"></ion-icon> Habitación</ion-item>
         <!---item routerLink="/tips">
           <ion-icon name="bulb-outline" slot="start"></ion-icon> Tips</ion-item>-->
         
         
-          <ion-item routerLink="/logout" lines="none" >
+         <ion-item (click)="cerrarSesion()">
           <ion-icon name="log-out-outline" slot="start"></ion-icon> Cerrar Sesión</ion-item>
       </ion-list>
     </ion-content>
