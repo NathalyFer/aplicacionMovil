@@ -103,26 +103,7 @@ ion-content {
     color: rgb(42, 132, 173); 
   }
 
-  mat-form-field {
-    background-color: transparent; /* Fondo transparente para el campo del formulario */
-  }
-  
-  mat-form-field .mat-form-field-flex {
-    background-color: transparent; /* Fondo transparente para el contenedor del input */
-  }
-  
-  mat-form-field .mat-form-field-infix {
-    background-color: transparent; /* Fondo transparente en el área del input */
-  }
-  
-  input[matInput] {
-    background-color: transparent; /* Fondo transparente del input */
-    color: #3b96a2; 
-  }
-  
-  mat-datepicker-toggle {
-    background-color: transparent; /* Fondo transparente para el selector de fecha */
-  }
+
 
   ion-card ion-button {
     --background: #78d79b; 
@@ -151,3 +132,4 @@ ion-content {
   font-size: 2em; /* Tamaño de fuente más grande */
   padding-top: 15px;
 }
+

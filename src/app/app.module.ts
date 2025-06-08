@@ -14,12 +14,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [AppComponent, InfoUsuarioModalPage],
-  imports: [BrowserModule, CommonModule, IonicModule.forRoot(), AppRoutingModule
+  imports: [BrowserModule, FormsModule, CommonModule, IonicModule.forRoot(), AppRoutingModule
     , BrowserAnimationsModule, MatNativeDateModule,OverlayModule,
     MatFormFieldModule, MatInputModule, MatDatepickerModule
   ],
