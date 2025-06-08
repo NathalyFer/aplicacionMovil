@@ -132,4 +132,11 @@ ion-content {
   font-size: 2em; /* Tamaño de fuente más grande */
   padding-top: 15px;
 }
+.card-registrarsse {
+  background-color: rgba(225, 189, 203, 0.892); /* Fondo blanco semitransparente */
+  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 30px; /* Espacio interno */
+  margin: 20px; /* Espacio externo */
+}
 

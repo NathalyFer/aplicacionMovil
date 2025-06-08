@@ -22,28 +22,24 @@
       <ion-card-content>
 
           <ion-item [@slideAnimation]="animationState">
-            <ion-label position="floating">Nombre:</ion-label>
-            <ion-input type="text" [(ngModel)]="nombre"></ion-input>
+            <ion-input label="Nombre:" type="text" placeholder="Ingresa tu nombre" [(ngModel)]="nombre"></ion-input>
           </ion-item>
 
           <ion-item [@slideAnimation]="animationState">
-            <ion-label position="floating">Apellido:</ion-label>
-            <ion-input type="text" [(ngModel)]="apellido"></ion-input>
+            <ion-input label="Apellido:" type="text" placeholder="Ingresa tu Apellido" [(ngModel)]="apellido"></ion-input>
           </ion-item>
 
           <ion-item [@slideAnimation]="animationState">
-            <ion-label position="floating">Correo:</ion-label>
-            <ion-input type="email" [(ngModel)]="email"></ion-input>
+            <ion-input label="Email:" type="text" placeholder="xxx@xxxx.com" [(ngModel)]="email"></ion-input>
           </ion-item>
+
           <!-- <ion-item [@slideAnimation]="animationState" class="ingreso-datos"> -->
           <ion-item [@slideAnimation]="animationState">
-            <ion-label position="floating">Usuario:</ion-label>
-            <ion-input type="text" [(ngModel)]="usuario"></ion-input>
+            <ion-input label="Usuario:" type="text" placeholder="Ingresa un usuario" [(ngModel)]="username"></ion-input>
           </ion-item>
 
           <ion-item [@slideAnimation]="animationState">
-            <ion-label position="floating">Contraseña:</ion-label>
-            <ion-input type="password" [(ngModel)]="password"></ion-input>
+            <ion-input label="Contraseña:" type="password" placeholder="••••" [(ngModel)]="password" ></ion-input>
           </ion-item>
 
           <ion-item [@slideAnimation]="animationState">
@@ -61,13 +57,13 @@
             <ion-label>Fecha Nacimeeinto:</ion-label>
             <ion-item>
           
-            <!-- Componente angular material -->
-            <mat-form-field>
-              <mat-label>dd/mm/yyyy</mat-label>
-              <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">  
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker> 
-            </mat-form-field>  
+           <!-- Componente de Angular Material-->
+           <mat-form-field>
+            <mat-label></mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">  
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker> 
+          </mat-form-field> 
 
                
             </ion-item>
