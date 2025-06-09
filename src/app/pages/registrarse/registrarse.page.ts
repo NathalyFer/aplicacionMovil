@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, keyframes,style,animate, transition } from '@angular/animations';
 import { InfoUsuarioModalPage } from '../info-usuario-modal/info-usuario-modal.page';
-import { ModalController } from '@ionic/angular';
+import { MenuController, ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
+import {FormatearFechaPipe} from '../../pipes/formatear-fecha.pipe';
 
 @Component({
   selector: 'app-registrarse',
@@ -33,21 +34,22 @@ export class RegistrarsePage  {
   username: any = '';
   password: any = '';
   educationLevel: any | null = null; // Puede ser 'Primaria', 'Secundaria', 'Terciaria' o 'Universitaria'
-  selectedDate: any='';
+  fechaFormateada: any='';
 
   
   animationState: string = '';
   router: any;
   nombreTouched = false;
+  selectedDate: any;
 
   // Constructor para inyectar el ModalController y AlertController
-  constructor(private modalCtrl: ModalController, private alertController: AlertController) { }
-
-    // Constructor
+  constructor(private modalCtrl: ModalController, 
+              private alertController: AlertController,
+              private formatearFechaPipe: FormatearFechaPipe,) { }
 
   
-
   ngOnInit() {
+
   }
   // Método para mostrar alertas
   async mostrarAlerta(mensaje: string) {
@@ -62,6 +64,9 @@ export class RegistrarsePage  {
 
 
  guardar() {
+
+    const fechaFormateada = this.fechaFormateada.transform(this.selectedDate);
+
   // Validar campos vacíos
   if (
     !this.nombre ||
@@ -128,7 +133,7 @@ export class RegistrarsePage  {
     username: this.username,
     password: this.password,
     educationLevel: this.educationLevel,
-    fechaNacimiento: this.selectedDate
+    fechaNacimiento: this.fechaFormateada,
   });
 
   this.mostrarAlerta('¡Registro exitoso!');
@@ -159,6 +164,9 @@ limpiar() {
 
   //Método para abril el modal
   async abrirModal() {
+
+    this.fechaFormateada = this.formatearFechaPipe.transform(this.selectedDate);
+
     this.animationState = 'visible'; // Cambia el estado de la animación
     // Aquí puedes agregar la lógica para abrir el modal
     const modal = await this.modalCtrl.create({
@@ -170,7 +178,7 @@ limpiar() {
         username: this.username,
         password: this.password,
         educationLevel: this.educationLevel,
-        selectedDate: this.selectedDate
+        fechaNacimiento: this.fechaFormateada
       },
       cssClass: 'modal-card'
 });

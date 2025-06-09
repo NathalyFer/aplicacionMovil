@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { FormatearFechaPipe } from 'src/app/pipes/formatear-fecha.pipe';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class InfoUsuarioModalPage  {
   @Input() usuario!: any;
   @Input() password!: any;
   @Input() educationLevel!: any | null;
-  @Input() selectedDate!: any;
+  @Input() fechaNacimiento!: any;
 
   constructor(private modalCtrl: ModalController) { }
 

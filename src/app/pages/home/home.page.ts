@@ -17,6 +17,7 @@ import { SwiperOptions } from 'swiper/types';
 export class HomePage {
   username: any = '';
   hola: string = 'Hola!!';
+  tipRating = 0;
 
   slideOpts: SwiperOptions = {};
 
@@ -39,6 +40,14 @@ export class HomePage {
     this.username = params['username'] || 'Invitado';
   });
    }
+
+   calificarTip(valor: number) {
+  this.tipRating = valor;
+  console.log(`Tip calificado con: ${valor} estrellas`);
+  }
+  irACatalogo() {
+  this.router.navigate(['/catalogo']);
+  }
    
   goToProduct(id: number) {
     this.router.navigate(['/product', id]);

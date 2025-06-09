@@ -27,11 +27,36 @@
   </div>
 
   <!-- productos destacados -->
- <swiper [config]="slideOpts" [pagination]="true">
-  <ng-template swiperSlide *ngFor="let product of featuredProducts">
-    <img [src]="product.image" alt="{{ product.name }}" />
-    <h3>{{ product.name }}</h3>
-    <p>{{ product.price | currency }}</p>
-    <ion-button expand="block" (click)="goToProduct(product.id)">Ver producto</ion-button>
-  </ng-template>
-</swiper>
+ <ion-card class="product-card">
+  <img src="assets/img/organizador_2_niveles.png" alt="Organizador" />
+  <ion-card-header>
+    <ion-card-title>Organizados 2 niveles </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    Practico organizador de 2 niveles, ideal para mantener tus espacios ordenados.
+    <p>Precio: $14.990</p>
+  </ion-card-content>
+
+  <!-- Tip con animación -->
+    <div [@fadeInUp] class="tip-container">
+      <ion-text color="primary">
+        <h3>💡 Tip útil:</h3>
+        <p>Coloca este organizador bajo el lavaplatos para tener tus esponjas, detergentes y paños siempre a mano. ¡Despídete del caos!</p>
+      </ion-text>
+    
+        <!-- Calificación simple -->
+      <div class="rating-stars">
+        <ng-container *ngFor="let star of [1,2,3,4,5]">
+          <ion-icon
+            name="star"
+            [class.filled]="star <= tipRating"
+            (click)="calificarTip(star)">
+          </ion-icon>
+        </ng-container>
+      </div>
+    </div>
+</ion-card>
+
+<ion-button expand="block" color="success" class="btn-comprar" (click)="irACatalogo()">
+  🛒 Ir a comprar
+</ion-button>
