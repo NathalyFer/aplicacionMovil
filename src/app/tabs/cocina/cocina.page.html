@@ -7,8 +7,8 @@
       <ion-back-button defaultHref="/login" class="custom-back-button"></ion-back-button>
     </ion-buttons>
 
-    <!-- Título centrado opcional -->
-    <ion-title style="text-align: center;">Detalles que orddenan</ion-title>
+    <!-- Título centrado  -->
+    <ion-title style="text-align: center;">Cocina</ion-title>
 
       <!-- Botón de menú a la derecha-->
       <ion-buttons slot="end" class="menu-button">
@@ -16,3 +16,42 @@
       </ion-buttons> 
     </ion-toolbar>
 </ion-header> 
+
+<ion-content>
+<!-- imagen representativa  -->
+  <div class="top-banner">
+    <img src="assets/img/cocina.jpg" alt="Banner Cocina" />
+  </div>
+
+  <!-- Lista de productos -->
+  <div class="product-grid">
+    <ion-card *ngFor="let producto of productos">
+      <div class="centro-img">
+        <img [src]="producto.foto" alt="{{ producto.nombre }}" />
+      </div>
+
+      <ion-card-header>
+        <ion-card-title>{{ producto.nombre }}</ion-card-title>
+        <p class="precio">Precio: ${{ producto.precio }}</p>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p class="descripcion">{{ producto.descripcion }}</p>
+
+        <div class="rating">
+          <ion-icon 
+            *ngFor="let star of [1,2,3,4,5]; let i = index"
+            name="star"
+            [color]="i < producto.calificacion ? 'warning' : 'medium'"
+            (click)="calificarProducto(producto, i + 1)">
+          </ion-icon>
+        </div>
+
+        <ion-button expand="block" (click)="comprarProducto(producto)">
+          Comprar
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

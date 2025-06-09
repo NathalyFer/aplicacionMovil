@@ -1,0 +1,101 @@
+:host {
+  --background: #fdf9f9; /* Fondo claro general */
+  display: block;
+}
+
+/* Imagen superior que ocupa 1/4 de la altura de la pantalla */
+.top-banner {
+  width: 100%;
+  height: 25vh;
+  overflow: hidden;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.top-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Contenedor de productos */
+.product-grid {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Tarjeta de producto */
+ion-card {
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  transition: transform 0.2s ease-in-out;
+}
+
+ion-card:hover {
+  transform: scale(1.01);
+}
+
+/* Imagen centrada dentro de la tarjeta */
+.centro-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 16px;
+}
+
+.centro-img img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #be96a7;
+}
+
+/* Título del producto */
+ion-card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #57195b;
+}
+
+/* Precio */
+.precio {
+  margin-top: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a6299;
+}
+
+/* Descripción del producto */
+.descripcion {
+  font-size: 0.9rem;
+  color: #666666;
+  margin-bottom: 10px;
+  padding-top: 4px;
+}
+
+/* Estrellas de calificación */
+.rating {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.rating ion-icon {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Botón de compra */
+ion-button {
+  --background: #be96a7;
+  --color: white;
+  --border-radius: 20px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
