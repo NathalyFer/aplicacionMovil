@@ -9,6 +9,8 @@ import { SwiperModule } from 'swiper/angular';
 
 import { HomePageRoutingModule } from './home-routing.module';
 
+import { ComponenteComponent } from 'src/app/company-name/componente/componente.component';
+
 
 @NgModule({
   imports: [
@@ -17,9 +19,9 @@ import { HomePageRoutingModule } from './home-routing.module';
     IonicModule,
     RouterModule.forChild([{ path: '', component: HomePage }]),
     SwiperModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
   ],
-  declarations: [HomePage]
+  declarations: [HomePage,ComponenteComponent]
 })
 export class HomePageModule {}
 

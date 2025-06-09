@@ -1,174 +1,238 @@
-ion-card {
-    background-color: transparent; /* Fondo semitransparente */
-    backdrop-filter: blur(5px); /* Opcional: agrega un efecto de desenfoque detrás */
-    box-shadow: none;
-    border-radius: 5%;
-    margin: 10%  auto;
-    width: 90%; 
-  }
-.transparent-header {
-  --background: transparent;
-  --ion-background-color: transparent;
-  background: transparent !important;
-  box-shadow: none; /* quita sombra si no la quieres */
-}
-ion-content {
-  --background: transparent;
-  background: transparent !important;
+:host {
+  background-image: url('/assets/img/fondo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-ion-content {
-  --background: #e6f7ff;
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+/* transparencia en header*/
+.transparent-header {
+  background: rgba(177, 136, 152, 0.548); /* Fondo blanco con 60% de opacidad */
+  --ion-background-color: rgba(170, 133, 158, 0.404); /* Ionic variable fallback */
+  backdrop-filter: blur(6px); /* Opcional: desenfoque elegante */
+  -webkit-backdrop-filter: blur(6px);
+}
+/* tamaño*/
+.transparent-header ion-toolbar {
+  height: 140px; /* Ajusta el valor a lo que necesites */
+  min-height: 44px; /* Para asegurarte que no crezca */
+  padding: 0 10px; /* Opcional, reduce el padding horizontal */
+}
+
+
+/*menu boton*/
+.menu-button ion-menu-button {
+  --ion-color-base: transparente; /* Cambia el color a rojo */
+  color: #57195b; /* Aplica el color al icono */
+}
+/* bienvenidos*/
+.custom-title {
+  color: #57195b;
+  font-size: 22px;
+  text-align: center;
+  font-weight: bold; 
+  margin-left: 2px; 
+}
+
+
+/* componente logo detalles*/
+.componente {
+  display: flex;
+  justify-content: flex-start; /* Alineación izquierda */
   padding: 16px;
 }
 
-ion-header, ion-toolbar {
-  --background: transparent;
-  --ion-background-color: transparent;
-  background: transparent !important;
-  color: #591861;
-}
-
-
-.avatar {
-  width: 60%;         /* Cambia el tamaño relativo al contenedor */
-  max-width: 250px;   /* Limita el tamaño máximo en pantallas grandes */
-  height: auto;       /* Mantiene proporción original */
-  display: block;     
-  margin: 0 auto;     /* Centrado horizontal */
-  padding-top: 20px;  /* Espacio superior */
-}
+/*avatar usuaria*/
 .user-info {
+  font-size: 0.9rem; /* Disminuye el texto general */
+  max-width: 250px;  /* Opcional: limita el ancho */
+  padding: 8px;      /* Reduce espacio interno si era mucho */
+  color:#1a6299;
+  text-align: center;      /* Centra el texto */
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
-  text-align: center;
+  flex-direction: column;  /* Asegura que los elementos se apilen */
+  align-items: center;     /* Centra horizontalmente los hijos */
+  margin: 0 auto;          /* Centra el contenedor si no está en un flex padre */
 }
-.user-info h2 {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #57195b; /* Mismo púrpura que el resto del tema */
-  line-height: 1.4;
+
+.user-info .avatar {
+  width: 200px;       /* Reduce el tamaño de la imagen */
+  height: 200px;
 }
+
+/* texto usuario avatar*/
+.user-info h1 {
+  font-size: 1.7rem; /* Ajusta el tamaño del saludo */
+  margin: 4px 0;     /* Menos espacio entre líneas */
+  color:#138361;
+  font-weight: bold; 
+}
+
+.user-info p {
+  font-size: 0.85rem; /* Texto descriptivo más pequeño */
+  margin: 2px 0;
+  color:#1a6299;
+}
+
+/* contenido productos*/
 
 ion-card {
-  background-color: rgba(255, 255, 255, 0.5); /* Fondo semitransparente */
-  backdrop-filter: blur(5px); /* Opcional: agrega un efecto de desenfoque detrás */
-  box-shadow: none;
-  border-radius: 5%;
-  margin: 10%  auto;
-  width: 75%; 
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: visible;
+  transition: box-shadow 0.3s ease;
+}
+
+ion-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+ion-card-header {
+  padding: 16px 20px 8px 20px;
+  background-color: #be96a7; /* un color suave de fondo */
+  border-bottom: 1px solid #d0d7de;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+ion-card-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #f5f5f5; /* azul agradable */
+  margin: 0;
+  text-align: center;/* centrar texto*/
+  font-weight: bold; 
+}
+
+ion-card-content {
+  padding: 12px 20px 20px 20px;
+  font-size: 1.3rem;
+  color: #19737b;
+  line-height: 1.4;
+  text-align: center;
+}
+
+ion-card-content p {
+  font-weight: 600;
+  margin-top: 12px;
+  color: #007acc;
+  font-size: 1.5rem;
+  text-align: center;/* centrar texto*/
+}
+
+
+/*tips*/
+.tips {
+  margin-top: 24px;
+  padding: 16px;
+  border: 2px dashed rgb(158, 21, 122);
+  color:#1a9d7c;
+}
+ion-text h3 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #007acc; 
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+ion-text p {
+  font-size: 1.5rem;
+  color: #286e8c;
+  line-height: 1.5;
+  text-align: center;
+  margin: 0 16px;
+}
+
+.tip-container {
+  animation: fadeInUp 0.6s ease;
+  color:#007acc;
 }
 
 .rating-stars {
   display: flex;
+  justify-content: center;
   gap: 6px;
-  margin-top: 8px;
-  ion-icon {
-    font-size: 24px;
-    color: #ccc;
-    transition: color 0.3s ease;
-    cursor: pointer;
-  }
-  .filled {
-    color: #ffc107; // color dorado para estrellas llenas
-  }
+  margin-top: 12px;
 }
-ion-card {
-  margin: 16px;
+
+ion-icon {
+  font-size: 24px;
+  color: lightgray;
+  cursor: pointer;
+}
+
+ion-icon.filled {
+  color: rgb(230, 233, 45);
+}
+.ion-text {
+  color:#57195b;
+}
+/* boton ir a comprar*/
+
+.btn-comprar {
+  margin: 24px auto;
+  width: 90%;
+  font-size: 1.7rem;
+  font-weight: bold;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-  img {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    object-fit: cover;
-    width: 100%;
-    height: auto;
-  }
-
-  ion-card-header {
-    background-color: #f0f8ff;
-    padding: 12px;
-    text-align: center;
-
-    ion-card-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #3b96a2;
-    }
-  }
-
-  ion-card-content {
-    font-size: 0.95rem;
-    color: #444;
-    padding-bottom: 10px;
-
-    p {
-      font-weight: bold;
-      color: #2d6a4f;
-      margin-top: 8px;
-    }
-  }
-
- // Tip útil
-  .tip-container {
-    background-color: #e0f7fa;
-    padding: 12px;
-    border-radius: 10px;
-    margin: 12px;
-    border-left: 5px solid #00bcd4;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-
-    h3 {
-      margin: 0 0 6px;
-      font-size: 1rem;
-      color: #00796b;
-    }
-
-    p {
-      margin: 0;
-      font-size: 0.9rem;
-      color: #004d40;
-    }
-  }
-
-  // Estrellas de calificación
-  .rating-stars {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-
-    ion-icon {
-      font-size: 24px;
-      color: #ccc;
-      transition: transform 0.2s ease-in-out;
-
-      &.filled {
-        color: #fdd835; // Amarillo estrella
-      }
-
-      &:hover {
-        transform: scale(1.2);
-        cursor: pointer;
-      }
-    }
-  }
+  padding: 12px 0;
+  --background: #5cc29c;    
+  --background-hover: #5cc29c;
+  --background-activated: #5cc29c;
+  --color: white;
+  --box-shadow: 0 4px 12px rgb(243, 237, 237);
+  text-transform: none;       // evita mayúsculas automáticas
+  transition: transform 0.2s ease;
 }
 
-  .btn-comprar {
-    margin: 16px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    --background: linear-gradient(135deg, #2ecc71, #27ae60);
-    --color: white;
-    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    transition: transform 0.2s;
+.btn-comprar:hover {
+  transform: scale(1.02);
+}
 
-    &:hover {
-      transform: scale(1.02);
-    }
+.btn-comprar:active {
+  transform: scale(0.98);
+}
+
+
+ /* Animación de zoom suave */
+ @keyframes zoomIn {
+  0% {
+    transform: scale(1); /* Tamaño original */
   }
+  100% {
+    transform: scale(0.8); /* Zoom leve */
+  }
+}
+ion-content {
+  --background: transparent;
+  background: transparent;
+}
 

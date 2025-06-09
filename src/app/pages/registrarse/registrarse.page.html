@@ -8,10 +8,7 @@
     <!-- Título centrado opcional -->
     <ion-title class="center-title"> Registrarse!</ion-title>
 
-      <!-- Botón de menú a la derecha-->
-      <ion-buttons slot="end" class="menu-button">
-        <ion-menu-button menu="mainMenu"></ion-menu-button>
-      </ion-buttons> 
+
     </ion-toolbar>
 </ion-header> 
 
@@ -59,7 +56,7 @@
           
            <!-- Componente de Angular Material-->
            <mat-form-field>
-            <mat-label></mat-label>
+            <mat-label>dd/mm/yyyy</mat-label>
             <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">  
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker> 

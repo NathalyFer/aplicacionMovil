@@ -39,21 +39,44 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-ion-app {
-  background-image: url('assets/img/fondo.png');
+ion-app, ion-content {
+  background-image: url('/assets/img/fondo.png');
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-position: center center;
 }
-ion-content {
-  --background: transparent !important;
-}
+
 ion-header {
     --background: transparent; /* Fondo transparente */
     --ion-toolbar-background: transparent; /* Fondo transparente para la toolbar */
     --ion-toolbar-border-color: transparent; /* Elimina el borde */
   }
+
+  ion-header,
+  ion-toolbar,
+  ion-buttons,
+  app-company-name {
+    color: #5f195b; /* Ajusta el color del texto o íconos a darkblue */
+  }
+
+   ion-header,
+ ion-toolbar {
+  --ion-toolbar-border-color: transparent; /* Quita el borde */
+  --background: transparent;               /* Hace transparente la barra */ 
+ }
+ 
+  .header-md{
+    -webkit-box-shadow: none !important; /* Elimina la sombra */
+    box-shadow: none !important; /* Elimina la sombra */
+  }
+
+  .title_tab h2 {
+    text-align: center;
+    color: #581154;
+  }
+  
+
+
   /* Estilo para ion-modal */
   .custom-modal {
   --width: 80%;

@@ -7,13 +7,20 @@ import { IonicModule } from '@ionic/angular';
 import { CatalogoPageRoutingModule } from './catalogo-routing.module';
 
 import { CatalogoPage } from './catalogo.page';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CatalogoPageRoutingModule
+    CatalogoPageRoutingModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: CatalogoPage
+      }
+    ])
   ],
   declarations: [CatalogoPage]
 })

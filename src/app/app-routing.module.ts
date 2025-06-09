@@ -29,19 +29,23 @@ const routes: Routes = [
   },
   {
     path: 'catalogo',
-    loadChildren: () => import('./pages/catalogo/catalogo.module').then( m => m.CatalogoPageModule)
+    loadChildren: () => import('./tabs/catalogo/catalogo.module').then( m => m.CatalogoPageModule)
   },
   {
     path: 'cocina',
-    loadChildren: () => import('./pages/cocina/cocina.module').then( m => m.CocinaPageModule)
+    loadChildren: () => import('./tabs/cocina/cocina.module').then( m => m.CocinaPageModule)
   },
   {
     path: 'banio',
-    loadChildren: () => import('./pages/banio/banio.module').then( m => m.BanioPageModule)
+    loadChildren: () => import('./tabs/banio/banio.module').then( m => m.BanioPageModule)
   },
   {
     path: 'habitacion',
-    loadChildren: () => import('./pages/habitacion/habitacion.module').then( m => m.HabitacionPageModule)
+    loadChildren: () => import('./tabs/habitacion/habitacion.module').then( m => m.HabitacionPageModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   },
 
 

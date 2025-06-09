@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { SwiperOptions } from 'swiper/types';
+import { trigger, transition, style, animate } from '@angular/animations';
+
 
 
 @Component({
@@ -9,8 +11,17 @@ import { SwiperOptions } from 'swiper/types';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: false,
-
+  animations: [
+    trigger('fadeInUp', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate('400ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+      ])
+    ])
+  ]
 })
+
+
   
 
 
@@ -18,6 +29,7 @@ export class HomePage {
   username: any = '';
   hola: string = 'Hola!!';
   tipRating = 0;
+  companyName: string = 'Mi Empresa';
 
   slideOpts: SwiperOptions = {};
 
