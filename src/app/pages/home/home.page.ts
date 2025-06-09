@@ -29,7 +29,7 @@ export class HomePage {
   username: any = '';
   hola: string = 'Hola!!';
   tipRating = 0;
-  companyName: string = 'Mi Empresa';
+  companyName: string = 'Detalles que ordenan';
 
   slideOpts: SwiperOptions = {};
 

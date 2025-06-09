@@ -8,20 +8,21 @@ import { SwiperModule } from 'swiper/angular';
 
 
 import { HomePageRoutingModule } from './home-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
-import { ComponenteComponent } from 'src/app/company-name/componente/componente.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    SharedModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild([{ path: '', component: HomePage }]),
     SwiperModule,
     HomePageRoutingModule,
   ],
-  declarations: [HomePage,ComponenteComponent]
+  declarations: [HomePage]
 })
 export class HomePageModule {}
 

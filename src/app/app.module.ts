@@ -17,6 +17,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule } from '@angular/forms';
 
 
+
+
+
 @NgModule({
   declarations: [AppComponent, InfoUsuarioModalPage],
   imports: [BrowserModule, FormsModule, CommonModule, IonicModule.forRoot(), AppRoutingModule
