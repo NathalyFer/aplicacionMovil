@@ -1,3 +1,11 @@
+:host {
+  background-image: url('/assets/img/fondo.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
 .titulo-recuperar {
   font-size: 24px;
   font-weight: bold;
@@ -70,4 +78,8 @@ ion-input {
   font-size: 2em; /* Tamaño de fuente más grande */
   padding-top: 13px; /* Ajusta el padding superior */
   padding-bottom: 13px; /* Ajusta el padding inferior */
+}
+
+ion-content {
+  --background: transparent;
 }
