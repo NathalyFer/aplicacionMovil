@@ -14,7 +14,7 @@ export class InfoUsuarioModalPage  {
   @Input() nombre!: any;
   @Input() apellido!: any;
   @Input() email!: any;
-  @Input() usuario!: any;
+  @Input() username!: any;
   @Input() password!: any;
   @Input() educationLevel!: any | null;
   @Input() fechaNacimiento!: any;

@@ -5,6 +5,7 @@ import { MenuController, ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import {FormatearFechaPipe} from '../../pipes/formatear-fecha.pipe';
 
+
 @Component({
   selector: 'app-registrarse',
   templateUrl: './registrarse.page.html',
@@ -65,7 +66,7 @@ export class RegistrarsePage  {
 
  guardar() {
 
-    const fechaFormateada = this.fechaFormateada.transform(this.selectedDate);
+    const fechaFormateada = this.formatearFechaPipe.transform(this.selectedDate);
 
   // Validar campos vacíos
   if (
