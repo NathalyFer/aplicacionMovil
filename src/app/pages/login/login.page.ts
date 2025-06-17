@@ -71,18 +71,13 @@ export class LoginPage {
      
       // Valida para iniciar sesión
       if (username) {
-        let navigationExtras: NavigationExtras = {
-          state: {
-            usernameenviado: this.username,
-            passwordenviado: this.password
-          }
-        }
-        this.router.navigate(['/home'], navigationExtras);
+        this.router.navigate(['/home'], {
+          queryParams: { username: this.username }
+        });
       } else {
-        //usuario invalido mostrar mensaje
+        // Usuario inválido mostrar mensaje
         this.mostrarAlerta('Usuario o contraseña incorrectos.');
-      }
-    }
+      }}
 
   registrarse() {
     this.router.navigate(['/registrarse']);

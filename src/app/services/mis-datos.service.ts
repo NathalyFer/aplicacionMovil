@@ -109,6 +109,17 @@ export class MisDatosService {
   getIsDBReady() {
     return this.isDBReady.asObservable();
   }
+
+  getUsuarioPorUsername(username: string): Promise<any | null> {
+  return this.db.executeSql('SELECT * FROM users WHERE username = ?', [username])
+    .then(res => {
+      if (res.rows.length > 0) {
+        return res.rows.item(0);
+      } else {
+        return null;
+      }
+    });
+}
 }
 
 

@@ -27,7 +27,8 @@ import { MisDatosService } from 'src/app/services/mis-datos.service';
 
 
 export class HomePage {
-  username: any = '';
+  username: string = '';
+  usuarioCompleto: any;
   hola: string = 'Hola!!';
   tipRating = 0;
   companyName: string = 'Detalles que ordenan';
@@ -56,11 +57,14 @@ export class HomePage {
         this.cargarDatosUsuario(this.username);}
   });
    }
+
      async cargarDatosUsuario(username: string) {
     try {
-      const usuario = await this.misDatosService.validarUsuario(username, '');
-      if (username) {
-        this.username = username;
+      const usuario = await this.misDatosService.getUsuarioPorUsername(username);
+      if (usuario) {
+        this.usuarioCompleto = usuario;
+        this.username = usuario.username;
+        console.log ('Usuario cargado:', usuario);
       } else {
         console.log('Usuario no encontrado');
       }
