@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { SwiperOptions } from 'swiper/types';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { MisDatosService } from 'src/app/services/mis-datos.service';
 
 
 
@@ -44,14 +45,29 @@ export class HomePage {
    constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private misDatosService: MisDatosService
   ) {}
 
    ngOnInit() {
   this.route.queryParams.subscribe(params => {
     this.username = params['username'] || 'Invitado';
+     if (this.username !== 'Invitado') {
+        this.cargarDatosUsuario(this.username);}
   });
    }
+     async cargarDatosUsuario(username: string) {
+    try {
+      const usuario = await this.misDatosService.validarUsuario(username, '');
+      if (username) {
+        this.username = username;
+      } else {
+        console.log('Usuario no encontrado');
+      }
+    } catch (error) {
+      console.error('Error al cargar usuario', error);
+    }
+  }
 
    calificarTip(valor: number) {
   this.tipRating = valor;

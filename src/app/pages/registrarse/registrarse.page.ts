@@ -4,6 +4,8 @@ import { InfoUsuarioModalPage } from '../info-usuario-modal/info-usuario-modal.p
 import { MenuController, ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import {FormatearFechaPipe} from '../../pipes/formatear-fecha.pipe';
+import { MisDatosService } from 'src/app/services/mis-datos.service';
+
 
 
 @Component({
@@ -46,7 +48,9 @@ export class RegistrarsePage  {
   // Constructor para inyectar el ModalController y AlertController
   constructor(private modalCtrl: ModalController, 
               private alertController: AlertController,
-              private formatearFechaPipe: FormatearFechaPipe,) { }
+              private formatearFechaPipe: FormatearFechaPipe,
+              private misDatosService: MisDatosService,
+            ) { }
 
   
   ngOnInit() {
@@ -63,6 +67,7 @@ export class RegistrarsePage  {
     await alert.present();
   }
 
+  
 
  guardar() {
 
@@ -113,7 +118,7 @@ export class RegistrarsePage  {
     this.mostrarAlerta('La contraseña debe tener exactamente 4 dígitos numéricos.');
     return;
   }
-
+  
   // Validar nivel de educación
   if (!this.educationLevel) {
     this.mostrarAlerta('Debe seleccionar un nivel de educación.');
@@ -126,28 +131,30 @@ export class RegistrarsePage  {
     return;
   }
 
-  // Si todas las validaciones pasan
-  console.log('Datos válidos:', {
-    nombre: this.nombre,
-    apellido: this.apellido,
-    email: this.email,
-    username: this.username,
-    password: this.password,
-    educationLevel: this.educationLevel,
-    fechaNacimiento: this.fechaFormateada,
+  // Si todas las validaciones pasan se registra en la base de datos
+  this.misDatosService.registerUser(
+    this.nombre,
+    this.apellido,
+    this.email,
+    this.username,
+    this.password,
+    this.educationLevel,
+    this.formatearFechaPipe.transform(this.selectedDate)
+  ).then((resultado) => {
+    if (resultado) {
+      this.mostrarAlerta('¡Registro exitoso!');
+      this.limpiar(); // limpia el formulario si todo fue bien
+    } else {
+      this.mostrarAlerta('No se pudo registrar el usuario. Verifica si el correo ya está en uso.');
+    }
   });
-
-  this.mostrarAlerta('¡Registro exitoso!');
-  // Aquí podrías redirigir, guardar o abrir un modal
 }
-
   
-  
+  // metodo limpiar
 
-  //método
-limpiar() {
+  limpiar() {
   this.animationState = 'animateSlide';
-
+  
   //limpiar variables
     this.nombre = '';
     this.apellido = '';
@@ -196,5 +203,7 @@ limpiar() {
     }
   this.animationState = ''; // Restablece el estado de la animación
   
-  }}
 
+  
+  }
+}

@@ -16,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule } from '@angular/forms';
 
+// SQLite//
+import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';//
 
 
 
@@ -26,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     , BrowserAnimationsModule, MatNativeDateModule,OverlayModule,
     MatFormFieldModule, MatInputModule, MatDatepickerModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, SQLite],
   bootstrap: [AppComponent],
   exports: [BrowserAnimationsModule, InfoUsuarioModalPage]
 })

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { MisDatosService } from 'src/app/services/mis-datos.service';
 
 
 
@@ -16,7 +17,8 @@ export class LoginPage {
   password: string = '';
 
   constructor( private router: Router,
-                private alertController: AlertController) { }
+                private alertController: AlertController,
+                private misDatosService: MisDatosService) { }
   
   registrarse() {
     this.router.navigate(['/registrarse']);
@@ -66,13 +68,25 @@ export class LoginPage {
   
   
 
-    // Si la autenticación es exitosa, redirigir al usuario
-    this.router.navigate(['/home'], {
-  queryParams: { username: this.username }
-});
-
-
-}}
+    //  Verificación de  usuario con SQLite
+    this.misDatosService.validarUsuario(this.username, this.password)
+      .then(usuario => {
+        if (usuario) {
+          // Usuario válido → redirigir
+          this.router.navigate(['/home'], {
+            queryParams: { username: usuario.usuario }
+          });
+        } else {
+          // Usuario o contraseña incorrectos
+          this.mostrarAlerta('Usuario o contraseña incorrectos.');
+        }
+      })
+      .catch(err => {
+        console.error('Error validando usuario:', err);
+        this.mostrarAlerta('Ocurrió un error al validar. Intenta de nuevo.');
+      });
+  }
+}
 
 
 function recuperar() {
