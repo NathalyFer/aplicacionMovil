@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { MisDatosService } from 'src/app/services/mis-datos.service';
 
@@ -15,18 +15,22 @@ import { MisDatosService } from 'src/app/services/mis-datos.service';
 export class LoginPage {
   username: string = '';
   password: string = '';
+  isDBReady: boolean = false
 
   constructor( private router: Router,
                 private alertController: AlertController,
                 private misDatosService: MisDatosService) { }
-  
-  registrarse() {
-    this.router.navigate(['/registrarse']);
-  }
 
-  recuperar() {
-    this.router.navigate(['/recuperar']); 
+  ngOnInit() {
+    this.misDatosService.getIsDBReady().subscribe(isReady => {
+      this.isDBReady = isReady;
+      if (isReady) {
+        this.mostrarAlerta('La base de datos aún no está lista. Intenta en un momento.');
+      }
+    });
   }
+  
+
 
   
   //metodo para mostrar alerta
@@ -41,57 +45,55 @@ export class LoginPage {
   }
 
 
-  //metodo login completo
-  login() {
-      // Validar que el campo usuario no esté vacío
-      if (!this.username) {
-        this.mostrarAlerta('Por favor, complete todos los campos.');
-        return;
-      }
-      // Validar que el campo usuario tenga entre 3 y 8 caracteres
+  //metodo login 
+  async login() {
+
+      // Validaciones de campos
+    if (!this.username || !this.password) {
+      this.mostrarAlerta('Por favor, complete todos los campos.');
+      return;
+    }
+
+    // Validar que el campo usuario tenga entre 3 y 8 caracteres
       if (this.username.length < 3 || this.username.length > 8) {
         this.mostrarAlerta('El usuario debe tener entre 3 y 8 caracteres.');
         return;
       }
 
-      // Validar que el campo contraseña no esté vacío
-      if (!this.password) {
-        this.mostrarAlerta('Por favor, complete todos los campos.');
-        return;
-      }
       // Validar que la contraseña tenga 4 caracteres
       if (this.password.length !== 4) {
         this.mostrarAlerta('La contraseña debe tener 4 caracteres.');
         return;
       }
 
-  
-  
-
-    //  Verificación de  usuario con SQLite
-    this.misDatosService.validarUsuario(this.username, this.password)
-      .then(usuario => {
-        if (usuario) {
-          // Usuario válido → redirigir
-          this.router.navigate(['/home'], {
-            queryParams: { username: usuario.usuario }
-          });
-        } else {
-          // Usuario o contraseña incorrectos
-          this.mostrarAlerta('Usuario o contraseña incorrectos.');
+      // Validar usuario en base de datos
+      const username = await this.misDatosService.validarUsuario(this.username, this.password);
+     
+      // Valida para iniciar sesión
+      if (username) {
+        let navigationExtras: NavigationExtras = {
+          state: {
+            usernameenviado: this.username,
+            passwordenviado: this.password
+          }
         }
-      })
-      .catch(err => {
-        console.error('Error validando usuario:', err);
-        this.mostrarAlerta('Ocurrió un error al validar. Intenta de nuevo.');
-      });
+        this.router.navigate(['/home'], navigationExtras);
+      } else {
+        //usuario invalido mostrar mensaje
+        this.mostrarAlerta('Usuario o contraseña incorrectos.');
+      }
+    }
+
+  registrarse() {
+    this.router.navigate(['/registrarse']);
+  }
+
+  recuperar() {
+    this.router.navigate(['/recuperar']); 
   }
 }
-
-
-function recuperar() {
-  throw new Error('Function not implemented.');
-}
+  
+  
 // function recuperar() {
 //   throw new Error('Function not implemented.');
 // }

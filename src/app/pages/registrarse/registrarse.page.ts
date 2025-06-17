@@ -5,6 +5,7 @@ import { MenuController, ModalController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import {FormatearFechaPipe} from '../../pipes/formatear-fecha.pipe';
 import { MisDatosService } from 'src/app/services/mis-datos.service';
+import { Router } from '@angular/router';
 
 
 
@@ -41,21 +42,32 @@ export class RegistrarsePage  {
 
   
   animationState: string = '';
-  router: any;
   nombreTouched = false;
   selectedDate: any;
+  isDBReady: boolean = false;
+  
+  
 
   // Constructor para inyectar el ModalController y AlertController
   constructor(private modalCtrl: ModalController, 
               private alertController: AlertController,
               private formatearFechaPipe: FormatearFechaPipe,
               private misDatosService: MisDatosService,
+              private router: Router
             ) { }
 
   
-  ngOnInit() {
-
+   ngOnInit() {
+    //  verifica si la DB está lista
+    this.misDatosService.getIsDBReady()?.subscribe(isReady => {
+      this.isDBReady = isReady;
+      if (isReady) {
+        // 
+      }
+    });
   }
+
+  
   // Método para mostrar alertas
   async mostrarAlerta(mensaje: string) {
     const alert = await this.alertController.create({
@@ -130,25 +142,38 @@ export class RegistrarsePage  {
     this.mostrarAlerta('Debe seleccionar una fecha de nacimiento.');
     return;
   }
+   //  Si todo está bien, guardarDatos()
+  this.guardarDatos();
+  }
 
   // Si todas las validaciones pasan se registra en la base de datos
-  this.misDatosService.registerUser(
+  guardarDatos() {
+    this.misDatosService.registerUser( 
     this.nombre,
     this.apellido,
     this.email,
     this.username,
     this.password,
     this.educationLevel,
-    this.formatearFechaPipe.transform(this.selectedDate)
-  ).then((resultado) => {
-    if (resultado) {
+    this.formatearFechaPipe.transform(this.selectedDate))
+    .then(() => {
+      console.log('Registro exitoso. Redirigiendo...'); // ← Agrega esto
       this.mostrarAlerta('¡Registro exitoso!');
-      this.limpiar(); // limpia el formulario si todo fue bien
-    } else {
+
+        // Espera un momento para que se vea la alerta antes de navegar
+    setTimeout(() => {
+      console.log('Redirigiendo a /login...');
+      this.router.navigate(['/login']); // <-- redirige a la página de login
+    }, 1500);
+  
+    })
+    .catch (error => {
       this.mostrarAlerta('No se pudo registrar el usuario. Verifica si el correo ya está en uso.');
-    }
-  });
-}
+    });
+  }
+    
+  
+
   
   // metodo limpiar
 
