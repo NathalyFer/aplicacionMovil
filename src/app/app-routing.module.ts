@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
     {
@@ -17,7 +18,8 @@ const routes: Routes = [
   },
   {
     path:'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'registrarse',
@@ -29,23 +31,28 @@ const routes: Routes = [
   },
   {
     path: 'catalogo',
-    loadChildren: () => import('./tabs/catalogo/catalogo.module').then( m => m.CatalogoPageModule)
+    loadChildren: () => import('./tabs/catalogo/catalogo.module').then( m => m.CatalogoPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'cocina',
-    loadChildren: () => import('./tabs/cocina/cocina.module').then( m => m.CocinaPageModule)
+    loadChildren: () => import('./tabs/cocina/cocina.module').then( m => m.CocinaPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'banio',
-    loadChildren: () => import('./tabs/banio/banio.module').then( m => m.BanioPageModule)
+    loadChildren: () => import('./tabs/banio/banio.module').then( m => m.BanioPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'habitacion',
-    loadChildren: () => import('./tabs/habitacion/habitacion.module').then( m => m.HabitacionPageModule)
+    loadChildren: () => import('./tabs/habitacion/habitacion.module').then( m => m.HabitacionPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'tabs',
-    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

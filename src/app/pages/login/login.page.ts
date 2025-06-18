@@ -66,6 +66,9 @@ export class LoginPage {
         return;
       }
 
+      //si todas las validaciones son correctas
+      localStorage.setItem('usuarioActivo', 'true'); // simula sesión iniciada
+
       // Validar usuario en base de datos
       const username = await this.misDatosService.validarUsuario(this.username, this.password);
      
