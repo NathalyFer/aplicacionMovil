@@ -15,7 +15,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class HomePage {
   username: string = 'tuNombre';
   companyName: string = 'Detalles que ordenan';
-  segmentValue: string = 'misdatos';
+  segmentValue: string = 'experiencia'; // Valor por defecto del segmento
 
 
 
@@ -29,10 +29,7 @@ export class HomePage {
   });
    }
 
-  // Método para manejar el cambio de segmento
-    segmentChanged(event: any) {
-    this.segmentValue = event.detail.value;
-  }
+ 
 }
 
 
