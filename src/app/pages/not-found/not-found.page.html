@@ -1,9 +1,16 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>not-found</ion-title>
+    <ion-title>Página no encontrada</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  Error: Página no encontrada
+<ion-content [fullscreen]="true" class="not-found-content ion-padding">
+  <div class="not-found-card">
+    <ion-icon name="warning-outline" class="warning-icon"></ion-icon>
+    <h1>Error 404</h1>
+    <p>Lo sentimos, la página que buscas no existe.</p>
+    <ion-button color="primary" routerLink="/inicio" expand="block">
+      Volver al inicio
+    </ion-button>
+  </div>
 </ion-content>
