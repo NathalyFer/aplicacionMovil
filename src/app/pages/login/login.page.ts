@@ -24,15 +24,12 @@ export class LoginPage {
   ngOnInit() {
     this.misDatosService.getIsDBReady().subscribe(isReady => {
       this.isDBReady = isReady;
-      if (isReady) {
+      if (!isReady) {
         this.mostrarAlerta('La base de datos aún no está lista. Intenta en un momento.');
       }
     });
   }
-  
-
-
-  
+    
   //metodo para mostrar alerta
   async mostrarAlerta(mensaje: string) {
     const alert = await this.alertController.create({
@@ -47,7 +44,6 @@ export class LoginPage {
 
   //metodo login 
   async login() {
-
       // Validaciones de campos
     if (!this.username || !this.password) {
       this.mostrarAlerta('Por favor, complete todos los campos.');
@@ -65,15 +61,14 @@ export class LoginPage {
         this.mostrarAlerta('La contraseña debe tener 4 caracteres.');
         return;
       }
-
-      //si todas las validaciones son correctas
-      localStorage.setItem('usuarioActivo', 'true'); // simula sesión iniciada
-
-      // Validar usuario en base de datos
+       // Validar usuario en base de datos
       const username = await this.misDatosService.validarUsuario(this.username, this.password);
-     
-      // Valida para iniciar sesión
+
+            // Valida para iniciar sesión
       if (username) {
+        //si todas las validaciones son correctas
+        localStorage.setItem('usuarioActivo', 'true'); // simula sesión iniciada
+        
         this.router.navigate(['/home'], {
           queryParams: { username: this.username }
         });
@@ -81,6 +76,8 @@ export class LoginPage {
         // Usuario inválido mostrar mensaje
         this.mostrarAlerta('Usuario o contraseña incorrectos.');
       }}
+
+  
 
   registrarse() {
     this.router.navigate(['/registrarse']);

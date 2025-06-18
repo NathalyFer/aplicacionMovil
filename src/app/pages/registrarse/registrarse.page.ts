@@ -156,22 +156,22 @@ export class RegistrarsePage  {
     this.password,
     this.educationLevel,
     this.formatearFechaPipe.transform(this.selectedDate))
-    .then(() => {
-      console.log('Registro exitoso. Redirigiendo...'); // ← Agrega esto
-      this.mostrarAlerta('¡Registro exitoso!');
-
-        // Espera un momento para que se vea la alerta antes de navegar
-    setTimeout(() => {
-      console.log('Redirigiendo a /login...');
-      this.router.navigate(['/login']); // <-- redirige a la página de login
-    }, 1500);
-  
+    .then((success: boolean) => {
+    if(success) {
+        this.mostrarAlerta('¡Registro exitoso!');
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 1500);
+      } else {
+        this.mostrarAlerta('No se pudo registrar el usuario. Verifica si el correo ya está en uso.');
+      }
     })
-    .catch (error => {
-      this.mostrarAlerta('No se pudo registrar el usuario. Verifica si el correo ya está en uso.');
-    });
-  }
-    
+    .catch(async error => {
+        await this.mostrarAlerta('Error al registrar usuario: ' + error);
+        throw error;
+      });
+    }
+ 
   
 
   

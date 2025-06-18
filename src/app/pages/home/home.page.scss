@@ -4,7 +4,15 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+.custom-title {
+  font-size: 1.5em;
+  color: #820c6e; /* o el color que prefieras */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 50px; /* Puedes ajustar el valor */
+  text-align: left;  /* Alinea a la izquierda */
 
+}
 
 
 /* componente logo detalles*/
@@ -15,173 +23,55 @@
   z-index: 1000;  
 }
 ion-content {
-  padding-top: 60px; /* o el alto del componente */
+  padding-top: 10px; /* o el alto del componente */
 }
 
-/*avatar usuaria*/
-.user-info {
-  font-size: 0.9rem; /* Disminuye el texto general */
-  max-width: 250px;  /* Opcional: limita el ancho */
-  padding: 8px;      /* Reduce espacio interno si era mucho */
-  color:#1a6299;
-  text-align: center;      /* Centra el texto */
+.contenido-central {
   display: flex;
-  flex-direction: column;  /* Asegura que los elementos se apilen */
-  align-items: center;     /* Centra horizontalmente los hijos */
-  margin: 0 auto;          /* Centra el contenedor si no está en un flex padre */
+  flex-direction: column;
+  align-items: center;
+  gap: 60px; /* espacio entre los componentes */
+  padding: 20px;
 }
 
-.user-info .avatar {
-  width: 200px;       /* Reduce el tamaño de la imagen */
-  height: 200px;
+app-mis-datos,
+app-experiencia-laboral,
+app-certificaciones {
+  width: 100%;
+  max-width: 700px; /* opcional: limitar el ancho */
 }
-
-/* texto usuario avatar*/
-.user-info h1 {
-  font-size: 1.7rem; /* Ajusta el tamaño del saludo */
-  margin: 4px 0;     /* Menos espacio entre líneas */
-  color:#138361;
-  font-weight: bold; 
+.segment-container {
+  margin-top: 20px;
+  padding: 15px;
 }
-
-.user-info p {
-  font-size: 0.85rem; /* Texto descriptivo más pequeño */
-  margin: 2px 0;
-  color:#1a6299;
-}
-
-/* contenido productos*/
-
-ion-card {
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  overflow: visible;
-  transition: box-shadow 0.3s ease;
-}
-
-ion-card:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-ion-card-header {
-  padding: 16px 20px 8px 20px;
-  background-color: #be96a7; /* un color suave de fondo */
-  border-bottom: 1px solid #d0d7de;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-}
-
-ion-card-title {
-  font-size: 1.9rem;
-  font-weight: 700;
-  color: #f5f5f5; /* azul agradable */
-  margin: 0;
-  text-align: center;/* centrar texto*/
-  font-weight: bold; 
-}
-
-ion-card-content {
-  padding: 12px 20px 20px 20px;
-  font-size: 1.3rem;
-  color: #19737b;
-  line-height: 1.4;
-  text-align: center;
-}
-
-ion-card-content p {
-  font-weight: 600;
-  margin-top: 12px;
-  color: #007acc;
-  font-size: 1.5rem;
-  text-align: center;/* centrar texto*/
-}
-
-
-/*tips*/
-.tips {
-  margin-top: 24px;
-  padding: 16px;
-  border: 2px dashed rgb(158, 21, 122);
-  color:#1a9d7c;
-}
-ion-text h3 {
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: #007acc; 
-  margin-bottom: 8px;
-  text-align: center;
-}
-
-ion-text p {
-  font-size: 1.5rem;
-  color: #286e8c;
-  line-height: 1.5;
-  text-align: center;
-  margin: 0 16px;
-}
-
-.tip-container {
-  animation: fadeInUp 0.6s ease;
-  color:#007acc;
-}
-
-.rating-stars {
+.segmentos {
   display: flex;
   justify-content: center;
-  gap: 6px;
-  margin-top: 12px;
+  gap: 5px; /* espacio entre los segmentos */
+  margin-top: 150px; /* espacio superior */
+  background: #ffffffaa;
+}
+.welcome-message {
+  text-align: center;
+  font-size: 1.2em;
+  color: #fff; /* o el color que prefieras */
+  margin-top: 50px;
+}
+/* Estilo general del texto del botón */
+.segmento ion-segment-button {
+  font-family: 'Arial', sans-serif; /* Cambia a la fuente que desees */
+  font-size: 15px;                  /* Tamaño de letra */
+  font-weight: 600;                 /* Negrita */
+  color: #2eabb7;                   /* Color del texto (cuando no está seleccionado) */
+  text-transform: none;   
+  white-space: normal !important; /* Permite múltiples líneas */
+  text-align: center;             /* Centra el texto */
+  line-height: 1.2;
+  padding: 6px 4px;         /* Evita que se convierta en mayúsculas */
 }
 
-ion-icon {
-  font-size: 24px;
-  color: lightgray;
-  cursor: pointer;
+/* Cuando un botón está seleccionado */
+.segmento ion-segment-button.ion-activated {
+  color: #89317b;                   /* Color del texto activo */
+  font-weight: 700;
 }
-
-ion-icon.filled {
-  color: rgb(230, 233, 45);
-}
-.ion-text {
-  color:#57195b;
-}
-/* boton ir a comprar*/
-
-.btn-comprar {
-  margin: 24px auto;
-  width: 90%;
-  font-size: 1.7rem;
-  font-weight: bold;
-  border-radius: 12px;
-  padding: 12px 0;
-  --background: #5cc29c;    
-  --background-hover: #5cc29c;
-  --background-activated: #5cc29c;
-  --color: white;
-  --box-shadow: 0 4px 12px rgb(243, 237, 237);
-  text-transform: none;       // evita mayúsculas automáticas
-  transition: transform 0.2s ease;
-}
-
-.btn-comprar:hover {
-  transform: scale(1.02);
-}
-
-.btn-comprar:active {
-  transform: scale(0.98);
-}
-
-
- /* Animación de zoom suave */
- @keyframes zoomIn {
-  0% {
-    transform: scale(1); /* Tamaño original */
-  }
-  100% {
-    transform: scale(0.8); /* Zoom leve */
-  }
-}
-ion-content {
-  --background: transparent;
-  background: transparent;
-}
-
