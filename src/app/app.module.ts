@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+
 //animations
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -19,12 +20,16 @@ import { FormsModule } from '@angular/forms';
 // SQLite//
 import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';//
 
+//API REST//
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 
 
 @NgModule({
-  declarations: [AppComponent, InfoUsuarioModalPage],
-  imports: [BrowserModule, FormsModule, CommonModule, IonicModule.forRoot(), AppRoutingModule
+  declarations: [AppComponent, InfoUsuarioModalPage,],
+  imports: [BrowserModule, HttpClientModule,FormsModule, CommonModule, IonicModule.forRoot(), AppRoutingModule
     , BrowserAnimationsModule, MatNativeDateModule,OverlayModule,
     MatFormFieldModule, MatInputModule, MatDatepickerModule
   ],
