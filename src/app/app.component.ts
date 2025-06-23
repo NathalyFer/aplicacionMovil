@@ -24,8 +24,8 @@ export class AppComponent {
     this.router.navigate(['/login']); // Navega a /login
   }
 
-  navegarYcerrar(ruta: string) {
-    this.menu.close('mainMenu');
+  async navegarYcerrar(ruta: string) {
+    await this.menu.close('mainMenu');
     this.router.navigate([ruta]);
   }
 }

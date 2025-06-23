@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MisDatosService } from 'src/app/services/mis-datos.service';
 
 @Component({
   selector: 'app-cocina',
@@ -19,7 +20,7 @@ export class CocinaPage  {
     },
   ];
 
-  constructor() { }
+  constructor(private misDatosService: MisDatosService) { }
 
   ngOnInit() {
   }
@@ -31,10 +32,22 @@ export class CocinaPage  {
   }
 
   // Método para comprar
-  comprarProducto(producto: any) {
+  async comprarProducto(producto: any) {
     console.log(`Comprando producto: ${producto.nombre}`);
-    // Aquí podrías redirigir o agregar al carrito
+    try {
+      await this.misDatosService.agregarProductoCarrito({
+        nombre: producto.nombre,
+        precio: producto.precio,
+        foto: producto.foto
+      });
+      console.log('Producto agregado al carrito');
+      // Aquí puedes navegar al carrito si quieres, por ejemplo:
+      // this.router.navigate(['/carrito']);
+    } catch (error) {
+      console.error('Error agregando al carrito:', error);
+    }
   }
 
 }
+  
 

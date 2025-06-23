@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MisDatosService } from 'src/app/services/mis-datos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-habitacion',
@@ -18,7 +20,8 @@ export class HabitacionPage  {
       descripcion: 'caja ideal para mantener tu vestiario ordenado'}
   ];
 
-  constructor() { }
+  constructor(private misDatosService: MisDatosService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -29,10 +32,19 @@ export class HabitacionPage  {
     console.log(`Producto ${producto.nombre} calificado con ${calificacion} estrellas`);
   }
 
-  // Método para comprar
-  comprarProducto(producto: any) {
+    async comprarProducto(producto: any) {
     console.log(`Comprando producto: ${producto.nombre}`);
-    // Aquí podrías redirigir o agregar al carrito
+    try {
+      await this.misDatosService.agregarProductoCarrito({
+        nombre: producto.nombre,
+        precio: producto.precio,
+        foto: producto.foto
+      });
+      console.log('Producto agregado al carrito');
+      this.router.navigate(['/carrito']);  // Navega al carrito después de agregar
+    } catch (error) {
+      console.error('Error agregando al carrito:', error);
+    }
   }
 
 }

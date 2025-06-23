@@ -1,0 +1,42 @@
+
+
+<ion-header [translucent]="true" class="transparent-header">
+  <ion-toolbar>
+    <!-- boton de retroceso -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login" class="custom-back-button"></ion-back-button>
+    </ion-buttons>
+
+    <!-- Título centrado opcional -->
+    <ion-title style="text-align: center;">Carrito de compras</ion-title>
+
+      <!-- Botón de menú a la derecha-->
+      <ion-buttons slot="end" class="menu-button">
+        <ion-menu-button menu="mainMenu"></ion-menu-button>
+      </ion-buttons> 
+    </ion-toolbar>
+</ion-header> 
+
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="productosCarrito.length > 0; else vacio">
+    <ion-item *ngFor="let producto of productosCarrito">
+      <ion-thumbnail slot="start">
+        <img [src]="producto.foto">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ producto.nombre }}</h2>
+        <p>Precio: ${{ producto.precio }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-button expand="block" color="success" (click)="confirmarCompra()">
+      Confirmar Compra
+    </ion-button>
+  </ion-list>
+
+  <ng-template #vacio>
+    <ion-text color="medium">
+      <p class="ion-text-center">Tu carrito está vacío.</p>
+    </ion-text>
+  </ng-template>
+</ion-content>

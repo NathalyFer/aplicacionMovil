@@ -35,9 +35,9 @@ export class MisDatosService {
   }
 
 
-  //Crear tabla con los nuevos campos
- private createTables(): Promise<void> {
-    const sql = `
+//Crear tabla con los nuevos campos
+ private async createTables(): Promise<void> {
+    const sqlUsers  = `
       CREATE TABLE IF NOT EXISTS users(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nombre TEXT,
@@ -49,15 +49,26 @@ export class MisDatosService {
         fecha_nacimiento TEXT
       )
     `;
-    return this.db.executeSql(sql, [])
-      .then(() => {
-        this.presentToast('Tabla creada correctamente');
-      })
-      .catch(error => {
-        this.presentToast('Error creando tabla: ' + error);
+
+     // Crear tabla carrito
+    const sqlCarrito = `
+      CREATE TABLE IF NOT EXISTS carrito (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nombre TEXT,
+        precio REAL,
+        foto TEXT
+      )
+    `;
+
+      try {
+        await this.db.executeSql(sqlUsers, []);
+        await this.db.executeSql(sqlCarrito, []);
+        this.presentToast('Tablas creadas correctamente');
+      } catch (error) {
+        this.presentToast('Error creando tablas: ' + error);
         throw error;
-      });
-  }
+      }
+    }
 
 
   private async presentToast(mensaje: string) {
@@ -118,6 +129,44 @@ export class MisDatosService {
       } else {
         return null;
       }
+    });
+}
+// Insertar producto al carrito
+agregarProductoCarrito(producto: { nombre: string; precio: number; foto: string }): Promise<void> {
+  const sql = `INSERT INTO carrito (nombre, precio, foto) VALUES (?, ?, ?)`;
+  return this.db.executeSql(sql, [producto.nombre, producto.precio, producto.foto])
+    .then(() => this.presentToast('Producto agregado al carrito'))
+    .catch(async error => {
+      await this.presentToast('Error agregando producto: ' + error);
+      throw error;
+    });
+}
+
+// Obtener productos del carrito
+obtenerProductosCarrito(): Promise<any[]> {
+  const sql = `SELECT * FROM carrito`;
+  return this.db.executeSql(sql, [])
+    .then(res => {
+      const productos = [];
+      for (let i = 0; i < res.rows.length; i++) {
+        productos.push(res.rows.item(i));
+      }
+      return productos;
+    })
+    .catch(async error => {
+      await this.presentToast('Error obteniendo productos: ' + error);
+      return [];
+    });
+}
+
+// Limpiar carrito
+limpiarCarrito(): Promise<void> {
+  const sql = `DELETE FROM carrito`;
+  return this.db.executeSql(sql, [])
+    .then(() => this.presentToast('Carrito limpiado'))
+    .catch(async error => {
+      await this.presentToast('Error limpiando carrito: ' + error);
+      throw error;
     });
 }
 }

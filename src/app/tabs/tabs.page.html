@@ -4,10 +4,31 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">tabs</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="catalogo">
+      <ion-icon name="storefront-outline"></ion-icon>
+      <ion-label>Catálogo</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="habitacion">
+      <ion-icon name="bed-outline"></ion-icon>
+      <ion-label>Habitación</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="banio">
+      <ion-icon name="water-outline"></ion-icon>
+      <ion-label>Baño</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="cocina">
+      <ion-icon name="restaurant-outline"></ion-icon>
+      <ion-label>Cocina</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="carrito">
+      <ion-icon name="cart-outline"></ion-icon>
+      <ion-label>Carrito</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>
