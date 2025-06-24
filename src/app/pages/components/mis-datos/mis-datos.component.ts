@@ -5,7 +5,9 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { MisDatosService } from 'src/app/services/mis-datos.service';
 import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
-
+//camara//
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { ActionSheetController } from '@ionic/angular';  // para mostrar opciones
 
 
 
@@ -32,6 +34,7 @@ export class MisDatosComponent  {
   hola: string = 'Hola!!';
   tipRating = 0;
   companyName: string = 'Detalles que ordenan';
+  fotoUsuario: string = 'assets/img/usuaria.png';
 
   segmentValue: string = '';
 
@@ -48,6 +51,7 @@ export class MisDatosComponent  {
     private modalCtrl: ModalController,
     private misDatosService: MisDatosService,
     private router: Router,
+    private actionSheetController: ActionSheetController,
 
   ) {}
 
@@ -86,4 +90,49 @@ export class MisDatosComponent  {
     segmentChanged(event: any) {
     this.segmentValue = event.detail.value;
   }
+
+  async seleccionarFuente() {
+  const actionSheet = await this.actionSheetController.create({
+    header: 'Selecciona la fuente de la imagen',
+    buttons: [
+      {
+        text: 'Tomar foto',
+        icon: 'camera',
+        handler: () => {
+          this.tomarFoto(CameraSource.Camera);
+        }
+      },
+      {
+        text: 'Elegir de galería',
+        icon: 'image',
+        handler: () => {
+          this.tomarFoto(CameraSource.Photos);
+        }
+      },
+      {
+        text: 'Cancelar',
+        icon: 'close',
+        role: 'cancel'
+      }
+    ]
+  });
+
+  await actionSheet.present();
+}
+
+async tomarFoto(source: CameraSource) {
+  try {
+    const image = await Camera.getPhoto({
+      quality: 90,
+      allowEditing: false,
+      resultType: CameraResultType.DataUrl,
+      source: source,
+    });
+
+    this.fotoUsuario = image.dataUrl!;
+  } catch (error) {
+    console.log('No se pudo obtener la imagen', error);
+  }
+}
+
 }

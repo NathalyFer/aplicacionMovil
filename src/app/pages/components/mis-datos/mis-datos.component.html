@@ -5,7 +5,7 @@
 
  <!-- Imagen de usuario y mensaje de bienvenida -->
   <div class="user-info">
-    <img src="assets/img/usuaria.png" alt="User Avatar" class="avatar" />
+    <img [src]="fotoUsuario" alt="User Avatar" class="avatar" (click)="seleccionarFuente()"/>
     <h1>¡Hola, {{ username }}! </h1>
     <p>Encuentra los mejores productos para organizar tu hogar.</p>
   </div>

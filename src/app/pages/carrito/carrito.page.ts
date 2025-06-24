@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MisDatosService } from 'src/app/services/mis-datos.service';
 import { Geolocation } from '@capacitor/geolocation';
 import { AlertController, ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-carrito',
@@ -15,7 +17,8 @@ export class CarritoPage  {
 
   constructor(private misDatosService: MisDatosService,
               private alertCtrl: AlertController,
-              private toastCtrl: ToastController) { }
+              private toastCtrl: ToastController,
+              private router: Router ) { }
 
   async ngOnInit() {
     this.productosCarrito = await this.misDatosService.obtenerProductosCarrito();
@@ -54,6 +57,8 @@ export class CarritoPage  {
               color: 'success'
             });
             await toast.present();
+              // Navegar a la página del mapa (despacho)
+            this.router.navigate(['/mapa']);
           }
         }
       ]
