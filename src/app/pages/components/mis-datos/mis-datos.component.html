@@ -1,54 +1,18 @@
-
-
-
-<ion-content [fullscreen]="true" class="ion-padding"> 
-
- <!-- Imagen de usuario y mensaje de bienvenida -->
-  <div class="user-info">
-    <img [src]="fotoUsuario" alt="User Avatar" class="avatar" (click)="seleccionarFuente()"/>
-    <h1>¡Hola, {{ username }}! </h1>
-    <p>Encuentra los mejores productos para organizar tu hogar.</p>
-  </div>
-
-  <!-- productos destacados -->
-  
- <ion-card class="product-card">
-    <div class="product-image-wrapper">
-      <img src="assets/img/organizador_2_niveles.png" alt="Organizador" />
-    </div>
-
-    <ion-card-header>
-      <ion-card-title>Organizados 2 niveles </ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      Practico organizador de 2 niveles, ideal para mantener tus espacios ordenados.
-      <p>Precio: $14.990</p>
-    </ion-card-content>
-  </ion-card>
-
-  <!-- Tip con animación -->
-  <ion-card class = "tips">
-      <div [@fadeInUp] class="tip-container">
-        <ion-text >
-          <h3>💡 Tip útil:</h3>
-          <p>Coloca este organizador bajo el lavaplatos para tener tus esponjas, detergentes y paños siempre a mano. ¡Despídete del caos!</p>
-        </ion-text>
-    
-        <!-- Calificación simple -->
-          <div class="rating-stars">
-              <ng-container *ngFor="let star of [1,2,3,4,5]">
-                <ion-icon
-                  name="star"
-                  [class.filled]="star <= tipRating"
-                  (click)="calificarTip(star)">
-                </ion-icon>
-              </ng-container>
-          </div>
-    </div>
+<ion-card *ngIf="usuario">
+  <ion-card-header>
+    <ion-card-title>Mis Datos</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+    <p><strong>Apellido:</strong> {{ usuario.apellido }}</p>
+    <p><strong>Email:</strong> {{ usuario.email }}</p>
+    <p><strong>Usuario:</strong> {{ usuario.username }}</p>
+    <p><strong>Nivel de educación:</strong> {{ usuario.nivel_educacion }}</p>
+    <p><strong>Fecha de nacimiento:</strong> {{ usuario.fecha_nacimiento | date }}</p>
+  </ion-card-content>
 </ion-card>
 
-<ion-button expand="block"  class="btn-comprar" (click)="irACatalogo()">
-  🛒 Ir a comprar
-</ion-button>
+
+
 
 
