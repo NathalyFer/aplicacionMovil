@@ -66,6 +66,7 @@ export class LoginPage {
 
             // Valida para iniciar sesión
       if (username) {
+        this.misDatosService.setUsername(this.username);
         //si todas las validaciones son correctas
         localStorage.setItem('usuarioActivo', 'true'); // simula sesión iniciada
         

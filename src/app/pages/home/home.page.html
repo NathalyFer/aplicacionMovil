@@ -26,14 +26,14 @@
 <!---- segment para mostrar los componentes -->
 <ion-segment [(ngModel)]="segmentValue" class="segmento">
   <ion-segment-button value="misdatos">Mis Datos</ion-segment-button>
-  <ion-segment-button value="envio">Datos de Envío</ion-segment-button>
+  <ion-segment-button value="datosenvio">Datos de Envío</ion-segment-button>
   <ion-segment-button value="preferencias">Preferencias</ion-segment-button>
 </ion-segment>
 
   <!-- Mostrar el componente según selección -->
   <div [ngSwitch]="segmentValue" class="segment-container">
     <app-mis-datos *ngSwitchCase="'misdatos'" [username]="username"></app-mis-datos>
-    <app-datos-envio *ngSwitchCase="'envio'"></app-datos-envio>
+    <app-datos-envio *ngSwitchCase="'datosenvio'"></app-datos-envio>
     <app-preferencias *ngSwitchCase="'preferencias'"></app-preferencias>
   </div>
 

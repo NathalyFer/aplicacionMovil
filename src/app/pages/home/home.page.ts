@@ -1,5 +1,5 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 //camara//
@@ -10,7 +10,7 @@ import { SwiperOptions } from 'swiper';
 // Importa el servicio de datos de usuario
 import { MisDatosService } from '../../services/mis-datos.service';
 
-
+import { Subscription } from 'rxjs';
 
 
 
@@ -33,13 +33,18 @@ import { MisDatosService } from '../../services/mis-datos.service';
 
 
 export class HomePage {
-  fotoUsuario: string = 'assets/img/usuaria.png';
+
+  username: string = '';
   usuarioCompleto: any;
   hola: string = 'Hola!!';
   tipRating = 0;
-  username: string = 'tuNombre';
+  fotoUsuario: string = 'assets/img/usuaria.png';
   companyName: string = 'Detalles que ordenan';
   segmentValue: string = 'mis datos';
+
+   private usernameSub!: Subscription;
+
+
   
     slideOpts: SwiperOptions = {};
   
@@ -57,12 +62,21 @@ export class HomePage {
   ) {}
 
    ngOnInit() {
-    if (this.username && this.username !== 'Invitado') {
-        this.cargarDatosUsuario(this.username);
+    // Suscribirse a los cambios en username
+    this.usernameSub = this.misDatosService.getUsername().subscribe((username) => {
+      if (username && username !== 'Invitado') {
+        this.username = username;
+        console.log('Username actualizado:', this.username);
+      }
+    });
+  }
+    ngOnDestroy() {
+    // Evitar fugas de memoria
+    if (this.usernameSub) {
+      this.usernameSub.unsubscribe();
     }
+  }
    
-
-   }
     async cargarDatosUsuario(username: string) {
     try {
       const usuario = await this.misDatosService.getUsuarioPorUsername(username);

@@ -13,9 +13,9 @@ import { SwiperModule } from 'swiper/angular';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 
-import { ExperienciaLaboralComponent } from 'src/app/pages/components/experiencia-laboral/experiencia-laboral.component';
-import { CertificacionesComponent } from 'src/app/pages/components/certificaciones/certificaciones.component';
-import { MisDatosComponent } from 'src/app/pages/components/mis-datos/mis-datos.component';
+
+import { MisdatosComponent } from 'src/app/pages/components/misdatos/misdatos.component';
+import { DatosEnvioComponent } from '../components/datos-envio/datos-envio.component';
 
 
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -38,14 +38,13 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule,
+    MatNativeDateModule
   ],
 
   declarations: [
   HomePage, 
-  ExperienciaLaboralComponent, 
-  CertificacionesComponent,
-  MisDatosComponent
+  MisdatosComponent,
+  DatosEnvioComponent,
 
 ],
 

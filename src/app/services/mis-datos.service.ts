@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { SQLite, SQLiteObject } from '@awesome-cordova-plugins/sqlite/ngx';
 import { ToastController } from '@ionic/angular';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class MisDatosService {
+  
 
   public db!: SQLiteObject;
+  
+   private currentUsername: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   //observable
   private isDBReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
@@ -18,6 +21,7 @@ export class MisDatosService {
     private sqlite: SQLite, 
     private toastController: ToastController) { 
     this.initDatabase();
+    
   }
   private async initDatabase() {
     try {
@@ -130,7 +134,20 @@ export class MisDatosService {
         return null;
       }
     });
+
+    
 }
+
+ // Setea username
+
+setUsername(username: string) {
+  this.currentUsername.next(username);
+}
+  // Obtiene username como Observable para suscribirse
+getUsername(): Observable<string> {
+  return this.currentUsername.asObservable();
+}
+
 // Insertar producto al carrito
 agregarProductoCarrito(producto: { nombre: string; precio: number; foto: string }): Promise<void> {
   const sql = `INSERT INTO carrito (nombre, precio, foto) VALUES (?, ?, ?)`;
@@ -169,8 +186,27 @@ limpiarCarrito(): Promise<void> {
       throw error;
     });
 }
+// Guardar información de despacho
+guardarInfoDespacho(
+  username: string,
+  telefono: string,
+  calleNumero: string,
+  comuna: string,
+  ciudad: string,
+  instrucciones: string
+): Promise<void> {
+  const sql = `
+    INSERT INTO despacho (username, telefono, calle_numero, comuna, ciudad, instrucciones)
+    VALUES (?, ?, ?, ?, ?, ?)
+  `;
+ return this.db.executeSql(sql, [username, telefono, calleNumero, comuna, ciudad, instrucciones])
+    .then(() => this.presentToast('Dirección guardada'))
+    .catch(async err => {
+      await this.presentToast('Error al guardar dirección: ' + err);
+      throw err;
+    });
 }
 
-
+}
 
 
