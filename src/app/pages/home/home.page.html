@@ -11,7 +11,8 @@
     </ion-toolbar>
 </ion-header> 
 
- <app-componente [companyName]="companyName" class ="componente"></app-componente>
+
+      <!--<app-componente [companyName]="companyName" class ="componente"></app-componente>-->
 
 <ion-content [fullscreen]="true" class="ion-padding"> 
 
@@ -32,7 +33,8 @@
 
   <!-- Mostrar el componente según selección -->
   <div [ngSwitch]="segmentValue" class="segment-container">
-    <app-mis-datos *ngSwitchCase="'misdatos'" [username]="username"></app-mis-datos>
+    <app-misdatos *ngSwitchCase="'misdatos'" [username]="username"></app-misdatos>
+    <div *ngSwitchCase="'misdatos'">Estamos en Mis Datos</div>
     <app-datos-envio *ngSwitchCase="'datosenvio'"></app-datos-envio>
     <app-preferencias *ngSwitchCase="'preferencias'"></app-preferencias>
   </div>

@@ -34,13 +34,14 @@ import { Subscription } from 'rxjs';
 
 export class HomePage {
 
-  username: string = '';
+  username: string = 'naty22';
   usuarioCompleto: any;
   hola: string = 'Hola!!';
-  tipRating = 0;
+  tipRating = 3;
   fotoUsuario: string = 'assets/img/usuaria.png';
   companyName: string = 'Detalles que ordenan';
-  segmentValue: string = 'mis datos';
+  segmentValue: string = 'misdatos';
+  
 
    private usernameSub!: Subscription;
 

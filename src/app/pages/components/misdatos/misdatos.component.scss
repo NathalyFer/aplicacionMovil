@@ -1,0 +1,90 @@
+
+:root {
+  color-scheme: light;
+  --ion-background-color: #e6f7ff;
+  --ion-text-color: #0077b6;
+  --ion-toolbar-background: #c7eeff;
+  --ion-toolbar-color: #0077b6;
+  --ion-item-background: #ffffff;
+}
+
+misdatos-page, /* o el selector principal de tu componente */
+ion-content {
+  --background: none;
+  background-repeat: no-repeat;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  --padding-start: 15px;
+  --padding-end: 15px;
+}
+
+/* Contenedor principal tipo tarjeta */
+.misdatos-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Título del segmento */
+.misdatos-title {
+  font-size: 2.8rem;
+  color: #0096c7; /* azul base */
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+/* Subtítulo o descripción */
+.misdatos-subtitle {
+  font-size: 1.2rem;
+  color: #0077b6;
+  margin-bottom: 20px;
+}
+
+/* ion-item (input) */
+ion-item {
+  --background: #f5f5f5;
+  --border-radius: 15px;
+  --padding-start: 15px;
+  --padding-end: 15px;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  --min-height: 60px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ion-item enfocado */
+ion-item.item-has-focus {
+  --background: #e3f2fd;
+  border: 2px solid #48cae4;
+  --border-color: #48cae4;
+  --highlight-color-focused: #48cae4;
+}
+
+/* Botón guardar */
+ion-button.save-btn {
+  --background: #94ec9f;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-top: 15px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+}
+
+ion-button.save-btn:hover {
+  --background: #7fcd87;
+}
+
+/* Mensaje de éxito/error */
+.mensaje {
+  font-size: 1rem;
+  color: #009688;
+  margin-top: 10px;
+  text-align: center;
+}

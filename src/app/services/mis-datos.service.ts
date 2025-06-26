@@ -206,7 +206,25 @@ guardarInfoDespacho(
       throw err;
     });
 }
+// actualizar información de usuario
+updateUsuario(
+id: number, nombre: string, apellido: string, email: string, username: string, password: string, fechaNacimiento: string, p0: string): Promise<boolean> {
+  const sql = `
+    UPDATE users
+    SET nombre = ?, apellido = ?, email = ?, username = ?, password = ?, fecha_nacimiento = ?
+    WHERE id = ?
+  `;
 
+  return this.db.executeSql(sql, [nombre, apellido, email, username, password, fechaNacimiento, id])
+    .then(() => {
+      this.presentToast('Datos actualizados correctamente');
+      return true;
+    })
+    .catch(async error => {
+      await this.presentToast('Error actualizando datos: ' + error);
+      return false;
+    });
+}
 }
 
 
