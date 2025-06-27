@@ -19,6 +19,13 @@
   object-fit: cover;
   object-position: center;
 }
+.transparent-header {
+  --background: transparent;
+}
+
+.transparent-header ion-toolbar {
+  padding-top: env(safe-area-inset-top);
+}
 
 /* Contenedor de productos */
 .product-grid {

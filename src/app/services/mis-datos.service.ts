@@ -65,10 +65,23 @@ export class MisDatosService {
         foto TEXT
       )
     `;
+        const sqlDespacho = `
+
+      CREATE TABLE IF NOT EXISTS despacho (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      username TEXT UNIQUE,
+      telefono TEXT,
+      calle_numero TEXT,
+      comuna TEXT,
+      ciudad TEXT,
+      instrucciones TEXT
+      )
+    `;
 
       try {
         await this.db.executeSql(sqlUsers, []);
         await this.db.executeSql(sqlCarrito, []);
+        await this.db.executeSql(sqlDespacho, []);
 
         try {
           await this.db.executeSql(`ALTER TABLE users ADD COLUMN foto TEXT`, []);
@@ -158,6 +171,7 @@ setUsername(username: string) {
 getUsername(): Observable<string> {
   return this.currentUsername.asObservable();
 }
+//////////////////////////////////CARRITO/////////////////
 
 // Insertar producto al carrito
 agregarProductoCarrito(producto: { nombre: string; precio: number; foto: string }): Promise<void> {
@@ -175,7 +189,7 @@ obtenerProductosCarrito(): Promise<any[]> {
   const sql = `SELECT * FROM carrito`;
   return this.db.executeSql(sql, [])
     .then(res => {
-      const productos = [];
+      const productos: any[] = [];
       for (let i = 0; i < res.rows.length; i++) {
         productos.push(res.rows.item(i));
       }
@@ -197,6 +211,8 @@ limpiarCarrito(): Promise<void> {
       throw error;
     });
 }
+
+////////////////////////////////DESPACHO/////////////////
 // Guardar información de despacho
 guardarInfoDespacho(
   username: string,
@@ -207,16 +223,29 @@ guardarInfoDespacho(
   instrucciones: string
 ): Promise<void> {
   const sql = `
-    INSERT INTO despacho (username, telefono, calle_numero, comuna, ciudad, instrucciones)
+    INSERT OR REPLACE INTO despacho (username, telefono, calle_numero, comuna, ciudad, instrucciones)
     VALUES (?, ?, ?, ?, ?, ?)
   `;
- return this.db.executeSql(sql, [username, telefono, calleNumero, comuna, ciudad, instrucciones])
-    .then(() => this.presentToast('Dirección guardada'))
+
+  return this.db.executeSql(sql, [username, telefono, calleNumero, comuna, ciudad, instrucciones])
+    .then(() => this.presentToast('Dirección guardada correctamente'))
     .catch(async err => {
-      await this.presentToast('Error al guardar dirección: ' + err);
+      await this.presentToast('Error al guardar dirección: ' + err.message);
       throw err;
     });
 }
+
+// Obtener información de despacho por username
+obtenerDespachoPorUsuario(username: string): Promise<any | null> {
+  const sql = `SELECT * FROM despacho WHERE username = ?`;
+  return this.db.executeSql(sql, [username])
+    .then(res => res.rows.length > 0 ? res.rows.item(0) : null)
+    .catch(async err => {
+      await this.presentToast('Error obteniendo dirección: ' + err);
+      return null;
+    });
+}
+
 // actualizar información de usuario
 updateUsuario(
 id: number, nombre: string, apellido: string, email: string, username: string, password: string, fechaNacimiento: string, p0: string): Promise<boolean> {
