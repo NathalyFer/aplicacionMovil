@@ -26,6 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -38,7 +39,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    
   ],
 
   declarations: [
@@ -47,6 +49,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   DatosEnvioComponent,
 
 ],
+  
 
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

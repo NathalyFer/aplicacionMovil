@@ -72,11 +72,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/mapa/mapa.module').then( m => m.MapaPageModule),
     canActivate: [AuthGuard]
   },
-  {
-    path: 'camara',
-    loadChildren: () => import('./pages/camara/camara.module').then( m => m.CamaraPageModule),
-    canActivate: [AuthGuard]
-  },
  
   
   {

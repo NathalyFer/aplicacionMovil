@@ -69,6 +69,15 @@ export class MisDatosService {
       try {
         await this.db.executeSql(sqlUsers, []);
         await this.db.executeSql(sqlCarrito, []);
+
+        try {
+          await this.db.executeSql(`ALTER TABLE users ADD COLUMN foto TEXT`, []);
+        }catch (e: any) {
+          // Si la columna ya existe, ignorar el error
+          if (e.code !== 5) { // 5 es el código de error SQLITE_CONSTRAINT
+            throw e;
+          }
+        } 
         this.presentToast('Tablas creadas correctamente');
       } catch (error) {
         this.presentToast('Error creando tablas: ' + error);
@@ -227,6 +236,36 @@ id: number, nombre: string, apellido: string, email: string, username: string, p
       return false;
     });
 }
+
+// Guarda o actualiza la foto en base64 para un usuario dado
+async guardarFotoUsuario(username: string, fotoBase64: string): Promise<boolean> {
+  try {
+    const sql = 'UPDATE users SET foto = ? WHERE username = ?';
+    await this.db.executeSql(sql, [fotoBase64, username]);
+    console.log('Foto guardada correctamente para el usuario:', username);
+    await this.presentToast('Foto guardada correctamente');
+    return true;
+  } catch (error) {
+    await this.presentToast('Error guardando foto: ' + error);
+    return false;
+  }
+}
+
+// Obtiene la foto en base64 para un usuario dado
+async obtenerFotoUsuario(username: string): Promise<string | null> {
+  try {
+    const sql = 'SELECT foto FROM users WHERE username = ?';
+    const res = await this.db.executeSql(sql, [username]);
+    if (res.rows.length > 0) {
+      return res.rows.item(0).foto;
+    }
+    return null;
+  } catch (error) {
+    await this.presentToast('Error obteniendo foto: ' + error);
+    return null;
+  }
+}
+
 }
 
 

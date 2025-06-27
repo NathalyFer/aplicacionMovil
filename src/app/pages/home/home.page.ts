@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { ActionSheetController } from '@ionic/angular';  // para mostrar opciones
 import { SwiperOptions } from 'swiper';
+import { base64ToFile } from 'ngx-image-cropper';
 
 // Importa el servicio de datos de usuario
 import { MisDatosService } from '../../services/mis-datos.service';
@@ -41,6 +42,8 @@ export class HomePage {
   fotoUsuario: string = 'assets/img/usuaria.png';
   companyName: string = 'Detalles que ordenan';
   segmentValue: string = 'misdatos';
+  imageChangedEvent: any = '';
+  croppedImage: string = '';
   
 
    private usernameSub!: Subscription;
@@ -62,15 +65,22 @@ export class HomePage {
     private router: Router // Asegúrate de inyectar Router si usas this.router
   ) {}
 
-   ngOnInit() {
+   async ngOnInit() {
     // Suscribirse a los cambios en username
-    this.usernameSub = this.misDatosService.getUsername().subscribe((username) => {
+    this.usernameSub = this.misDatosService.getUsername().subscribe(async (username) => {
       if (username && username !== 'Invitado') {
         this.username = username;
         console.log('Username actualizado:', this.username);
+        await this.cargarFoto();  // <---- carga la foto al actualizar username
       }
     });
+    // También cargar foto si username ya está definido al iniciar
+  if (this.username && this.username !== 'Invitado') {
+    await this.cargarFoto();
   }
+  }
+
+
     ngOnDestroy() {
     // Evitar fugas de memoria
     if (this.usernameSub) {
@@ -93,6 +103,10 @@ export class HomePage {
     }
   }
 
+
+  //Productos destacados//
+
+
    calificarTip(valor: number) {
   this.tipRating = valor;
   console.log(`Tip calificado con: ${valor} estrellas`);
@@ -108,7 +122,7 @@ export class HomePage {
     this.segmentValue = event.detail.value;
   }
 
-
+ // Función para seleccionar la fuente de la imagen del usuario
  async seleccionarFuente() {
   const actionSheet = await this.actionSheetController.create({
     header: 'Selecciona la fuente de la imagen',
@@ -138,6 +152,7 @@ export class HomePage {
   await actionSheet.present();
 }
 
+// Función para tomar una foto o seleccionar de la galería
 async tomarFoto(source: CameraSource) {
   try {
     const image = await Camera.getPhoto({
@@ -148,10 +163,23 @@ async tomarFoto(source: CameraSource) {
     });
 
     this.fotoUsuario = image.dataUrl!;
-  } catch (error) {
-    console.log('No se pudo obtener la imagen', error);
+
+     // Guardar foto en SQLite
+    await this.misDatosService.guardarFotoUsuario(this.username, this.fotoUsuario);
+
+    } catch (error) {
+      console.log('No se pudo obtener la imagen', error);
   }
 
+  }
+  async cargarFoto() {
+    console.log('Cargando foto para username:', this.username);
+    const fotoGuardada = await this.misDatosService.obtenerFotoUsuario(this.username);
+    console.log('Foto obtenida:', fotoGuardada ? '[base64]' : 'No hay foto');
+    if (fotoGuardada) {
+      this.fotoUsuario = fotoGuardada;
+  }
 }
+
 
 }

@@ -27,6 +27,7 @@ import { Camera } from '@awesome-cordova-plugins/camera/ngx';
 
 
 
+
 @NgModule({
   declarations: [AppComponent, InfoUsuarioModalPage,],
   imports: [BrowserModule, HttpClientModule,FormsModule, CommonModule, IonicModule.forRoot(), AppRoutingModule
