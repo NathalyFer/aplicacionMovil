@@ -23,7 +23,7 @@ import { SQLite } from '@awesome-cordova-plugins/sqlite/ngx';//
 //API REST//
 import { HttpClientModule } from '@angular/common/http';
 
-
+import { Camera } from '@awesome-cordova-plugins/camera/ngx';
 
 
 
@@ -34,7 +34,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule, MatInputModule, MatDatepickerModule
   ],
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, SQLite],
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, 
+    Camera,
+    SQLite
+  ],
   bootstrap: [AppComponent],
   exports: [BrowserAnimationsModule, InfoUsuarioModalPage]
 })

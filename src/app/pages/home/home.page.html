@@ -18,9 +18,12 @@
 
  <!-- Imagen de usuario y mensaje de bienvenida -->
   <div class="user-info">
-    <img [src]="fotoUsuario" alt="User Avatar" class="avatar" (click)="seleccionarFuente()"/>
+   <div class="avatar-container" (click)="seleccionarFuente()">
+      <img [src]="fotoUsuario" alt="User Avatar" class="avatar" />
+      <ion-icon name="create" class="edit-icon"></ion-icon>
+    </div>
     <h1>¡Hola, {{ username }}! </h1>
-    <p>Encuentra los mejores productos para organizar tu hogar.</p>
+    <p>Encuentra los mejores productos para optimizar tu hogar.</p>
   </div>
   
 

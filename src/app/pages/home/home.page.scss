@@ -32,19 +32,51 @@ ion-content {
   width: 200px;       /* Reduce el tamaño de la imagen */
   height: 200px;
 }
+/* avatar usuario */
+.avatar-container {
+  position: relative;
+  width: 200px;  /* Igual que tu avatar */
+  height: 200px;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 100%;  /* Ya definido 200px */
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ccc;
+}
+
+.edit-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 28px;
+  color: white;
+  background-color: #b86e9f; /* Color verde similar al h1 */
+  border-radius: 50%;
+  padding: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+  transition: background-color 0.3s ease;
+}
+
+.avatar-container:hover .edit-icon {
+  background-color: #f4bed8; /* Un tono más oscuro al hacer hover */
+}
 
 /* texto usuario avatar*/
 .user-info h1 {
   font-size: 1.7rem; /* Ajusta el tamaño del saludo */
   margin: 4px 0;     /* Menos espacio entre líneas */
-  color:#138361;
+  color:#33ad88;
   font-weight: bold; 
 }
 
 .user-info p {
   font-size: 0.85rem; /* Texto descriptivo más pequeño */
   margin: 2px 0;
-  color:#1a6299;
+  color:#347db4;
 }
 
 .custom-title {

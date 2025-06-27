@@ -9,12 +9,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class MisDatosService {
   
-
+ // variable para manipular la conexion a la base de datos
+  // Se define como public para poder acceder a ella desde otros componentes
   public db!: SQLiteObject;
   
    private currentUsername: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  //observable
+  //observable para manipular si la base de datos esta lista
+  // Se define como private para que no se pueda acceder directamente desde otros componentes
   private isDBReady: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor( 
