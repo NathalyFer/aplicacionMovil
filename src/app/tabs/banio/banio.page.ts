@@ -41,7 +41,7 @@ export class BanioPage  {
         nombre: producto.nombre,
         precio: producto.precio,
         foto: producto.foto,
-        cantidad: cantidad
+        cantidad: producto.cantidad || 1  // asigna 1 si no tiene cantidad
       });
 
       console.log('Producto agregado al carrito');
@@ -50,5 +50,19 @@ export class BanioPage  {
       console.error('Error agregando al carrito:', error);
     }
   }
+
+  //metodo para incrementar la cantidad del producto
+  incrementarCantidad(producto: any) {
+  if (!producto.cantidad) producto.cantidad = 1;
+  producto.cantidad++;
+}
+
+decrementarCantidad(producto: any) {
+  if (!producto.cantidad || producto.cantidad <= 1) {
+    producto.cantidad = 1;
+  } else {
+    producto.cantidad--;
+  }
+}
 
 }

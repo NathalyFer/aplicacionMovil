@@ -32,6 +32,7 @@ export class CarritoPage  {
   // Se ejecuta cada vez que se entra a la página
   async ionViewWillEnter() {
     this.productosCarrito = await this.misDatosService.obtenerProductosCarrito();
+    this.calcularTotales();
   }
 
   async cargarProductosCarrito() {
@@ -41,7 +42,9 @@ export class CarritoPage  {
 
   // Método para calcular el subtotal, costo de envío y total
   calcularTotales() {
-  this.subtotal = this.productosCarrito.reduce((suma, prod) => suma + prod.precio, 0);
+  this.subtotal = this.productosCarrito.reduce((acc, item) => {
+    return acc + (item.precio * item.cantidad);
+  }, 0);
   this.total = this.subtotal + this.costoEnvio;
 }
 

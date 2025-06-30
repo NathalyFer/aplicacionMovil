@@ -47,11 +47,21 @@
           </ion-icon>
         </div>
 
-          <!-- Selector de cantidad -->
-        <ion-item lines="none">
-          <ion-label>Cantidad</ion-label>
-          <ion-input type="number"min="1"[(ngModel)]="producto.cantidad"placeholder="1" value="1"></ion-input>
-        </ion-item>
+        <!-- Selector de cantidad -->
+          <ion-item lines="none" class="cantidad-stepper">
+            <ion-label>Cantidad</ion-label>
+            <ion-buttons slot="end" size="small">
+              <ion-button (click)="decrementarCantidad(producto)" [disabled]="producto.cantidad <= 1">
+                <ion-icon name="remove-circle-outline"></ion-icon>
+              </ion-button>
+
+              <ion-label class="cantidad-label">{{ producto.cantidad || 1 }}</ion-label>
+
+              <ion-button (click)="incrementarCantidad(producto)">
+                <ion-icon name="add-circle-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
 
         <ion-button expand="block" (click)="comprarProducto(producto)">
           Comprar

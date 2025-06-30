@@ -21,29 +21,36 @@
 <ion-content class="ion-padding">
   <ion-list *ngIf="productosCarrito.length > 0; else vacio">
     <ion-item *ngFor="let producto of productosCarrito">
-      <ion-thumbnail slot="start">
-        <img [src]="producto.foto">
-      </ion-thumbnail>
+        <ion-thumbnail slot="start">
+          <img [src]="producto.foto">
+        </ion-thumbnail>
       <ion-label>
         <h2>{{ producto.nombre }}</h2>
-        <p>Precio: ${{ producto.precio | currency }}</p>
+        <p>Cantidad: {{ producto.cantidad }}</p>
+         <p>Precio unitario: {{ producto.precio | currency:'CLP':'symbol-narrow':'1.0-0':'es-CL' }}</p>
+        <p>Subtotal: <strong>{{ producto.precio * producto.cantidad | currency:'CLP':'symbol-narrow':'1.0-0':'es-CL' }}</strong></p>
       </ion-label>
     </ion-item>
 
-      <ion-item class="resumen-item">
-        <ion-label>Costo de envío</ion-label>
-        <ion-note slot="end">${{ costoEnvio }}</ion-note>
-      </ion-item>
+      <!-- Resumen del total -->
+       <!-- Resumen del total -->
+    <ion-item lines="none">
+      <ion-label>Subtotal</ion-label>
+      <ion-note slot="end">{{ subtotal | currency:'CLP':'symbol-narrow':'1.0-0':'es-CL' }}</ion-note>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Costo de envío</ion-label>
+      <ion-note slot="end">{{ costoEnvio | currency:'CLP':'symbol-narrow':'1.0-0':'es-CL' }}</ion-note>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label><strong>Total</strong></ion-label>
+      <ion-note slot="end"><strong>{{ total | currency:'CLP':'symbol-narrow':'1.0-0':'es-CL' }}</strong></ion-note>
+    </ion-item>
 
-       <ion-item class="resumen-item total">
-        <ion-label><strong>Total</strong></ion-label>
-        <ion-note slot="end"><strong>${{ total }}</strong></ion-note>
-      </ion-item>
-
-    <ion-button expand="block" class = "confirmar-compra" (click)="confirmarCompra()">
-        Confirmar Compra
-      </ion-button>
-    </ion-list>
+    <ion-button expand="block" color="success" (click)="confirmarCompra()">
+      Confirmar Compra
+    </ion-button>
+  </ion-list>
 
   <ng-template #vacio>
     <ion-text color="medium">

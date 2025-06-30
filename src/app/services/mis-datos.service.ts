@@ -64,7 +64,7 @@ export class MisDatosService {
         nombre TEXT,
         precio REAL,
         foto TEXT
-        cantidad INTEGER
+        cantidad INTEGER  DEFAULT 1
       )
     `;
         const sqlDespacho = `
@@ -86,8 +86,15 @@ export class MisDatosService {
         await this.db.executeSql(sqlDespacho, []);
 
         try {
+          await this.db.executeSql(`ALTER TABLE carrito ADD COLUMN cantidad INTEGER DEFAULT 1`, []);
+        } catch(e) {
+          // Ignorar error si ya existe la columna
+          console.log('Columna cantidad ya existe o no pudo ser añadida:', e);
+        }
+
+        try {
           await this.db.executeSql(`ALTER TABLE users ADD COLUMN foto TEXT`, []);
-        }catch (e: any) {
+        } catch (e: any) {
           // Si la columna ya existe, ignorar el error
           if (e.code !== 5) { // 5 es el código de error SQLITE_CONSTRAINT
             throw e;
@@ -219,14 +226,24 @@ async actualizarUsuario(usuario: {
 //////////////////////////////////CARRITO/////////////////
 
 // Insertar producto al carrito
-agregarProductoCarrito(producto: { nombre: string; precio: number; foto: string ; cantidad: number }): Promise<void> {
-  const sql = `INSERT INTO carrito (nombre, precio, foto, cantidad ) VALUES (?, ?, ?. ?)`;
-  return this.db.executeSql(sql, [producto.nombre, producto.precio, producto.foto, producto.cantidad])
-    .then(() => this.presentToast('Producto agregado al carrito'))
-    .catch(async error => {
-      await this.presentToast('Error agregando producto: ' + error);
-      throw error;
-    });
+async agregarProductoCarrito(producto: { nombre: string; precio: number; foto: string ; cantidad: number }): Promise<void> {
+  // Primero, verificar si producto ya está en carrito
+  const sqlSelect = `SELECT cantidad FROM carrito WHERE nombre = ?`;
+  const res = await this.db.executeSql(sqlSelect, [producto.nombre]);
+  
+  if (res.rows.length > 0) {
+    // Producto existe, actualizar cantidad sumando la nueva
+    const cantidadActual = res.rows.item(0).cantidad;
+    const nuevaCantidad = cantidadActual + producto.cantidad;
+    const sqlUpdate = `UPDATE carrito SET cantidad = ? WHERE nombre = ?`;
+    await this.db.executeSql(sqlUpdate, [nuevaCantidad, producto.nombre]);
+  } else {
+    // Producto no existe, insertar nuevo
+    const sqlInsert = `INSERT INTO carrito (nombre, precio, foto, cantidad) VALUES (?, ?, ?, ?)`;
+    await this.db.executeSql(sqlInsert, [producto.nombre, producto.precio, producto.foto, producto.cantidad]);
+  }
+
+  await this.presentToast('Producto agregado al carrito');
 }
 
 // Obtener productos del carrito

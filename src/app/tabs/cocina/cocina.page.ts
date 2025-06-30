@@ -51,6 +51,20 @@ export class CocinaPage  {
       console.error('Error agregando al carrito:', error);
     }
   }
+
+    //metodo para incrementar la cantidad del producto
+    incrementarCantidad(producto: any) {
+    if (!producto.cantidad) producto.cantidad = 1;
+    producto.cantidad++;
+  }
+
+  decrementarCantidad(producto: any) {
+    if (!producto.cantidad || producto.cantidad <= 1) {
+      producto.cantidad = 1;
+    } else {
+      producto.cantidad--;
+    }
+  }
 }
   
 

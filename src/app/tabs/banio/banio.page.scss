@@ -106,3 +106,24 @@ ion-button {
   font-weight: bold;
   letter-spacing: 0.5px;
 }
+
+/* cantidad */
+.cantidad-stepper {
+  ion-buttons {
+    display: flex;
+    align-items: center;
+
+    ion-button {
+      --padding-start: 0;
+      --padding-end: 0;
+    }
+
+    .cantidad-label {
+      width: 30px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin: 0 10px;
+    }
+  }
+}
