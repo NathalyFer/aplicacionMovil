@@ -273,7 +273,9 @@ guardarInfoDespacho(
   return this.db.executeSql(sql, [username, telefono, calleNumero, comuna, ciudad, region])
     .then(() => this.presentToast('Dirección guardada correctamente'))
     .catch(async err => {
-      await this.presentToast('Error al guardar dirección: ' + err.message);
+      console.error('Error guardando dirección:', err); // 👈 Imprimir en consola
+      await this.presentToast('Error al guardar dirección: ' + JSON.stringify(err));
+      console.error('Error detallado al guardar dirección:', err);
       throw err;
     });
 }
