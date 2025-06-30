@@ -12,7 +12,7 @@
 </ion-header> 
 
 
-      <!--<app-componente [companyName]="companyName" class ="componente"></app-componente>-->
+      <app-componente [companyName]="companyName" class ="componente"></app-componente>
 
 <ion-content [fullscreen]="true" class="ion-padding"> 
 
@@ -25,19 +25,19 @@
     <h1>¡Hola, {{ username }}! </h1>
     <p>Encuentra los mejores productos para optimizar tu hogar.</p>
   </div>
+
   
 
 <!---- segment para mostrar los componentes -->
 <ion-segment [(ngModel)]="segmentValue" class="segmento">
-  <ion-segment-button value="misdatos">Mis Datos</ion-segment-button>
-  <ion-segment-button value="datosenvio">Datos de Envío</ion-segment-button>
-  <ion-segment-button value="preferencias">Preferencias</ion-segment-button>
+  
+  <ion-segment-button value="datosenvio">Mis datos</ion-segment-button>
+  
 </ion-segment>
 
   <!-- Mostrar el componente según selección -->
   <div [ngSwitch]="segmentValue" class="segment-container">
     <app-misdatos *ngSwitchCase="'misdatos'" [username]="username"></app-misdatos>
-    <div *ngSwitchCase="'misdatos'">Estamos en Mis Datos</div>
     <app-datos-envio *ngSwitchCase="'datosenvio'"></app-datos-envio>
     <app-preferencias *ngSwitchCase="'preferencias'"></app-preferencias>
   </div>
@@ -83,4 +83,3 @@
 <ion-button expand="block"  class="btn-comprar" (click)="irACatalogo()">
   🛒 Ir a comprar
 </ion-button>
-</ion-content>

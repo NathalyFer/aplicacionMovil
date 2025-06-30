@@ -14,7 +14,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
-import { MisdatosComponent } from 'src/app/pages/components/misdatos/misdatos.component';
+
 import { DatosEnvioComponent } from '../components/datos-envio/datos-envio.component';
 
 
@@ -44,8 +44,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   ],
 
   declarations: [
-  HomePage, 
-  MisdatosComponent,
+  HomePage,
   DatosEnvioComponent,
 
 ],

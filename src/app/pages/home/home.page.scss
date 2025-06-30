@@ -17,11 +17,11 @@ ion-content {
 
 /*avatar usuaria*/
 .user-info {
-  font-size: 0.9rem; /* Disminuye el texto general */
-  max-width: 250px;  /* Opcional: limita el ancho */
+  font-size: 1.5 rem; /* Disminuye el texto general */
+  /*max-width: 250px;  /* Opcional: limita el ancho */
   padding: 8px;      /* Reduce espacio interno si era mucho */
   color:#1a6299;
-  text-align: center;      /* Centra el texto */
+  /*text-align: ;    /* Centra el texto */
   display: flex;
   flex-direction: column;  /* Asegura que los elementos se apilen */
   align-items: center;     /* Centra horizontalmente los hijos */
@@ -135,7 +135,7 @@ app-certificaciones {
 /* Estilo general del texto del botón */
 .segmento ion-segment-button {
   font-family: 'Arial', sans-serif; /* Cambia a la fuente que desees */
-  font-size: 15px;                  /* Tamaño de letra */
+  font-size: 35px;                  /* Tamaño de letra */
   font-weight: 600;                 /* Negrita */
   color: #2eabb7;                   /* Color del texto (cuando no está seleccionado) */
   text-transform: none;   

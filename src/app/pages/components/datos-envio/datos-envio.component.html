@@ -1,13 +1,54 @@
 <ion-card>
-  <ion-card-header>
-    <ion-card-title>Datos de Envío</ion-card-title>
+  <ion-card-header class="header-rosado">
+    <ion-card-title>Mis Datos</ion-card-title>
   </ion-card-header>
+
+  <ion-card-content>
+
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input type="text" [(ngModel)]="apellido"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" [(ngModel)]="email"></ion-input>
+    </ion-item>
+
+    <ion-item [@slideAnimation]="animationState">
+      <ion-label>Fecha Nacimiento:</ion-label>
+    </ion-item>
+
+     <mat-form-field>
+            <mat-label>dd/mm/yyyy</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">  
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker> 
+    </mat-form-field> 
+   
+
+    <ion-button expand="block" class = "boton-datos" (click)="guardarMisDatos()">
+      {{ datosCargados ? 'Actualizar Datos' : 'Guardar Datos' }}
+    </ion-button>
+
+  </ion-card-content>
+  
+  </ion-card>
+
+<ion-card>
+    <ion-card-header class="header-rosado">
+      <ion-card-title>Datos de Envío</ion-card-title>
+    </ion-card-header>
 
   <ion-card-content>
 
     <div *ngIf="direccionCargada">
       <ion-text color="success">
-        <p><strong>Dirección cargada:</strong></p>
       </ion-text>
     </div>
 
@@ -32,17 +73,20 @@
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Instrucciones adicionales</ion-label>
-      <ion-textarea [(ngModel)]="instrucciones"></ion-textarea>
+      <ion-label position="floating">Región</ion-label>
+      <ion-input type="text" [(ngModel)]="region"></ion-input>
     </ion-item>
 
-    <ion-button expand="block" color="primary" (click)="guardarDespacho()">
-      {{ direccionCargada ? 'Actualizar Dirección' : 'Guardar Dirección' }}
-    </ion-button>
+   <div class="boton-container">
+      <ion-button size="small" (click)="guardarDespacho()">
+        {{ direccionCargada ? 'Actualizar Dirección' : 'Guardar Dirección' }}
+      </ion-button>
 
-    <ion-button expand="block" fill="outline" color="success" *ngIf="direccionCargada" (click)="confirmarUsoDireccion()">
-      Usar Dirección Registrada
-    </ion-button>
+      <ion-button size="small" fill="outline" class ="btn_direccionregistrada" *ngIf="direccionCargada" (click)="confirmarUsoDireccion()">
+        Usar Dirección Registrada
+      </ion-button>
+   </div>
 
   </ion-card-content>
+
 </ion-card>

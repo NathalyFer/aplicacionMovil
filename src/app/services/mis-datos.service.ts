@@ -74,7 +74,7 @@ export class MisDatosService {
       calle_numero TEXT,
       comuna TEXT,
       ciudad TEXT,
-      instrucciones TEXT
+      region TEXT
       )
     `;
 
@@ -170,7 +170,50 @@ setUsername(username: string) {
   // Obtiene username como Observable para suscribirse
 getUsername(): Observable<string> {
   return this.currentUsername.asObservable();
+
 }
+
+async obtenerUsuarioPorUsername(username: string): Promise<any> {
+  const db = this.db;
+  const result = await db.executeSql(
+    `SELECT * FROM users WHERE username = ?`,
+    [username]
+  );
+
+  if (result.rows.length > 0) {
+    return result.rows.item(0);
+  }
+
+  return null;
+}
+
+
+async actualizarUsuario(usuario: {
+  username: string,
+  nombre: string,
+  apellido: string,
+  email: string,
+  fecha_nacimiento: string
+}): Promise<void> {
+  const db = this.db;
+  await db.executeSql(
+    `UPDATE users SET nombre = ?, apellido = ?, email = ?, fecha_nacimiento = ? WHERE username = ?`,
+    [
+      usuario.nombre,
+      usuario.apellido,
+      usuario.email,
+      usuario.fecha_nacimiento,
+      usuario.username
+    ]
+  )
+  .then(() => this.presentToast('Datos personales actualizados correctamente'))
+  .catch(async error => {
+    await this.presentToast('Error actualizando datos personales: ' + error);
+    throw error;
+  });
+}
+
+
 //////////////////////////////////CARRITO/////////////////
 
 // Insertar producto al carrito
@@ -220,14 +263,14 @@ guardarInfoDespacho(
   calleNumero: string,
   comuna: string,
   ciudad: string,
-  instrucciones: string
+  region: string
 ): Promise<void> {
   const sql = `
-    INSERT OR REPLACE INTO despacho (username, telefono, calle_numero, comuna, ciudad, instrucciones)
+    INSERT OR REPLACE INTO despacho (username, telefono, calle_numero, comuna, ciudad, region)
     VALUES (?, ?, ?, ?, ?, ?)
   `;
 
-  return this.db.executeSql(sql, [username, telefono, calleNumero, comuna, ciudad, instrucciones])
+  return this.db.executeSql(sql, [username, telefono, calleNumero, comuna, ciudad, region])
     .then(() => this.presentToast('Dirección guardada correctamente'))
     .catch(async err => {
       await this.presentToast('Error al guardar dirección: ' + err.message);
