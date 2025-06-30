@@ -70,7 +70,7 @@ export class CarritoPage  {
             const toast = await this.toastCtrl.create({
               message: 'Compra realizada con éxito!',
               duration: 2000,
-              color: 'success'
+              color: 'toast-personalizado',
             });
             await toast.present();
               // Navegar a la página del mapa (despacho)

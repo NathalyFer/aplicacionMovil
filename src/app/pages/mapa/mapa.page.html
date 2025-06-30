@@ -5,22 +5,36 @@
       <ion-back-button defaultHref="/home" class="custom-back-button"></ion-back-button>
     </ion-buttons>
 
-    <!-- Título centrado opcional -->
-    <ion-title style="text-align: center;">Carrito de compras</ion-title>
+    <ion-title style="text-align: center;">Seguimiento de Despacho</ion-title>
 
-      <!-- Botón de menú a la derecha-->
-      <ion-buttons slot="end" class="menu-button">
-        <ion-menu-button menu="mainMenu"></ion-menu-button>
-      </ion-buttons> 
-    </ion-toolbar>
-</ion-header> 
+    <ion-buttons slot="end">
+      <ion-menu-button menu="mainMenu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content [fullscreen]="true" class="ion-padding">
 
-<ion-content [fullscreen]="true">
-  
-  <ion-button expand="full" class="ion-margin" (click)="getCurrentPosition()">
-    Obtener ubicación actual 
+  <div class="mensaje-entrega">
+    <h2>¡Gracias por tu compra!</h2>
+    <p>Estamos preparando tu pedido. Puedes ver la ubicación estimada del despacho en el mapa.</p>
+  </div>
+
+  <ion-button expand="block" class = "boton-ubicacion" (click)="getCurrentPosition()">
+    <ion-icon name="locate" slot="start"></ion-icon>
+    Obtener ubicación actual
   </ion-button>
 
-  <iframe id = "mapFrame" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  <div id="map-container">
+    <iframe
+      id="mapFrame"
+      width="100%"
+      height="400"
+      frameborder="0"
+      style="border:0; border-radius: 10px;"
+      allowfullscreen=""
+      loading="lazy">
+    </iframe>
+  </div>
+
 </ion-content>

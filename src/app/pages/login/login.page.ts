@@ -25,7 +25,7 @@ export class LoginPage {
     this.misDatosService.getIsDBReady().subscribe(isReady => {
       this.isDBReady = isReady;
       if (!isReady) {
-        this.mostrarAlerta('La base de datos aún no está lista. Intenta en un momento.');
+        this.mostrarAlerta('');
       }
     });
   }
