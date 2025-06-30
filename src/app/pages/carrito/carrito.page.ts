@@ -14,6 +14,9 @@ import { Router } from '@angular/router';
 export class CarritoPage  {
 
   productosCarrito: any[] = [];
+  subtotal: number = 0;
+  costoEnvio: number = 3000; // segun lo que se ha definido en el servicio
+  total: number = 0;
 
   constructor(private misDatosService: MisDatosService,
               private alertCtrl: AlertController,
@@ -22,6 +25,7 @@ export class CarritoPage  {
 
   async ngOnInit() {
     this.productosCarrito = await this.misDatosService.obtenerProductosCarrito();
+    
   }
 
     
@@ -32,7 +36,16 @@ export class CarritoPage  {
 
   async cargarProductosCarrito() {
     this.productosCarrito = await this.misDatosService.obtenerProductosCarrito();
+    this.calcularTotales();
   }
+
+  // Método para calcular el subtotal, costo de envío y total
+  calcularTotales() {
+  this.subtotal = this.productosCarrito.reduce((suma, prod) => suma + prod.precio, 0);
+  this.total = this.subtotal + this.costoEnvio;
+}
+
+
   // Método para confirmar la compra con alerta
   async confirmarCompra() {
     const alert = await this.alertCtrl.create({

@@ -17,22 +17,25 @@ export class CatalogoPage  {
       id: 1,
       nombre: 'Organizador dos niveles',
       foto: 'assets/img/organizador_2_niveles.png',
-      precio: 14.990,
+      precio: 14990,
       calificacion: 4,
+      cantidad: 1 
     },
     {
       id: 2,
       nombre: 'Set 7 contenedores térmicos',
       foto: 'assets/img/set.png',
-      precio: 18.990,
+      precio: 18990,
       calificacion: 5,
+      cantidad: 1 
     },
     {
       id: 3,
       nombre: 'Caja De Almacenamiento De Ropa',
       foto: 'assets/img/caja.jpg',
-      precio: 5.990,
+      precio: 5990,
       calificacion: 3,
+      cantidad: 1 
     }
   ];
 
@@ -50,16 +53,19 @@ export class CatalogoPage  {
     console.log(`Producto ${producto.nombre} calificado con ${calificacion} estrellas`);
   }
 
-    async comprarProducto(producto: any) {
-    console.log(`Comprando producto: ${producto.nombre}`);
+  async comprarProducto(producto: any) {
+    const cantidad = producto.cantidad > 0 ? producto.cantidad : 1;
+
     try {
       await this.misDatosService.agregarProductoCarrito({
         nombre: producto.nombre,
         precio: producto.precio,
-        foto: producto.foto
+        foto: producto.foto,
+        cantidad: cantidad
       });
+
       console.log('Producto agregado al carrito');
-      this.router.navigate(['/carrito']);  // Navega al carrito después de agregar
+      this.router.navigate(['/carrito']);
     } catch (error) {
       console.error('Error agregando al carrito:', error);
     }

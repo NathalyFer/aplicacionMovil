@@ -14,11 +14,13 @@ export class CocinaPage  {
       id: 2,
       nombre: 'Set 7 contenedores térmicos',
       foto: 'assets/img/set.png',
-      precio: 18.990,
+      precio: 18990,
       calificacion: 5,
-      descripcion: 'Mantiene tus alimentos frescos  y libre de humedad por más tiempo.'
+      descripcion: 'Mantiene tus alimentos frescos  y libre de humedad por más tiempo.',
+      cantidad: 1
     },
   ];
+  router: any;
 
   constructor(private misDatosService: MisDatosService) { }
 
@@ -33,21 +35,22 @@ export class CocinaPage  {
 
   // Método para comprar
   async comprarProducto(producto: any) {
-    console.log(`Comprando producto: ${producto.nombre}`);
+    const cantidad = producto.cantidad > 0 ? producto.cantidad : 1;
+
     try {
       await this.misDatosService.agregarProductoCarrito({
         nombre: producto.nombre,
         precio: producto.precio,
-        foto: producto.foto
+        foto: producto.foto,
+        cantidad: cantidad
       });
+
       console.log('Producto agregado al carrito');
-      // Aquí puedes navegar al carrito si quieres, por ejemplo:
-      // this.router.navigate(['/carrito']);
+      this.router.navigate(['/carrito']);
     } catch (error) {
       console.error('Error agregando al carrito:', error);
     }
   }
-
 }
   
 

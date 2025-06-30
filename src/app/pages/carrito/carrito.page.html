@@ -26,13 +26,24 @@
       </ion-thumbnail>
       <ion-label>
         <h2>{{ producto.nombre }}</h2>
-        <p>Precio: ${{ producto.precio }}</p>
+        <p>Precio: ${{ producto.precio | currency }}</p>
       </ion-label>
     </ion-item>
-    <ion-button expand="block" color="success" (click)="confirmarCompra()">
-      Confirmar Compra
-    </ion-button>
-  </ion-list>
+
+      <ion-item class="resumen-item">
+        <ion-label>Costo de envío</ion-label>
+        <ion-note slot="end">${{ costoEnvio }}</ion-note>
+      </ion-item>
+
+       <ion-item class="resumen-item total">
+        <ion-label><strong>Total</strong></ion-label>
+        <ion-note slot="end"><strong>${{ total }}</strong></ion-note>
+      </ion-item>
+
+    <ion-button expand="block" class = "confirmar-compra" (click)="confirmarCompra()">
+        Confirmar Compra
+      </ion-button>
+    </ion-list>
 
   <ng-template #vacio>
     <ion-text color="medium">

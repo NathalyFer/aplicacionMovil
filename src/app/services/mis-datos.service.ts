@@ -57,12 +57,14 @@ export class MisDatosService {
     `;
 
      // Crear tabla carrito
+
     const sqlCarrito = `
       CREATE TABLE IF NOT EXISTS carrito (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nombre TEXT,
         precio REAL,
         foto TEXT
+        cantidad INTEGER
       )
     `;
         const sqlDespacho = `
@@ -217,9 +219,9 @@ async actualizarUsuario(usuario: {
 //////////////////////////////////CARRITO/////////////////
 
 // Insertar producto al carrito
-agregarProductoCarrito(producto: { nombre: string; precio: number; foto: string }): Promise<void> {
-  const sql = `INSERT INTO carrito (nombre, precio, foto) VALUES (?, ?, ?)`;
-  return this.db.executeSql(sql, [producto.nombre, producto.precio, producto.foto])
+agregarProductoCarrito(producto: { nombre: string; precio: number; foto: string ; cantidad: number }): Promise<void> {
+  const sql = `INSERT INTO carrito (nombre, precio, foto, cantidad ) VALUES (?, ?, ?. ?)`;
+  return this.db.executeSql(sql, [producto.nombre, producto.precio, producto.foto, producto.cantidad])
     .then(() => this.presentToast('Producto agregado al carrito'))
     .catch(async error => {
       await this.presentToast('Error agregando producto: ' + error);

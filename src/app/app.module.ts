@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { InfoUsuarioModalPage } from './pages/info-usuario-modal/info-usuario-modal.page';
@@ -25,8 +25,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { Camera } from '@awesome-cordova-plugins/camera/ngx';
 
+// peso chileno 
+import { registerLocaleData } from '@angular/common';
+import localeCl from '@angular/common/locales/es-CL';
 
-
+registerLocaleData(localeCl);
 
 @NgModule({
   declarations: [AppComponent, InfoUsuarioModalPage,],
@@ -35,7 +38,8 @@ import { Camera } from '@awesome-cordova-plugins/camera/ngx';
     MatFormFieldModule, MatInputModule, MatDatepickerModule
   ],
   providers: [
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, 
+    { provide: LOCALE_ID, useValue: 'es-CL' },
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Camera,
     SQLite
   ],
