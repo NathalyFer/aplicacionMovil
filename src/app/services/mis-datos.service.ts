@@ -91,6 +91,11 @@ export class MisDatosService {
           // Ignorar error si ya existe la columna
           console.log('Columna cantidad ya existe o no pudo ser añadida:', e);
         }
+        try {
+          await this.db.executeSql(`ALTER TABLE despacho ADD COLUMN region TEXT`, []);
+        } catch (e) {
+          console.log('La columna region ya existe o no se pudo añadir:', e);
+        }
 
         try {
           await this.db.executeSql(`ALTER TABLE users ADD COLUMN foto TEXT`, []);

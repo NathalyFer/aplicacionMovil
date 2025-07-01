@@ -24,9 +24,6 @@ export class LoginPage {
   ngOnInit() {
     this.misDatosService.getIsDBReady().subscribe(isReady => {
       this.isDBReady = isReady;
-      if (!isReady) {
-        this.mostrarAlerta('');
-      }
     });
   }
     
