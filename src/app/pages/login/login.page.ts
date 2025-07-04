@@ -1,7 +1,8 @@
+import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { MisDatosService } from 'src/app/services/mis-datos.service';
+//import { MisDatosService } from 'src/app/services/mis-datos.service';
 
 
 
@@ -18,13 +19,13 @@ export class LoginPage {
   isDBReady: boolean = false
 
   constructor( private router: Router,
-                private alertController: AlertController,
-                private misDatosService: MisDatosService) { }
+                private alertController: AlertController ) { }
+                //private misDatosService: MisDatosService//) { }
 
   ngOnInit() {
-    this.misDatosService.getIsDBReady().subscribe(isReady => {
+   /* this.misDatosService.getIsDBReady().subscribe(isReady => {
       this.isDBReady = isReady;
-    });
+    });*/
   }
     
   //metodo para mostrar alerta
@@ -58,8 +59,16 @@ export class LoginPage {
         this.mostrarAlerta('La contraseña debe tener 4 caracteres.');
         return;
       }
+
+      //si todas las validaciones son correctas, navegar a la página de home
+        this.router.navigate(['/home'], {
+          queryParams: { username: this.username, password: this.password }
+        });
+                          
+          }
+          
        // Validar usuario en base de datos
-      const username = await this.misDatosService.validarUsuario(this.username, this.password);
+      /*const username = await this.misDatosService.validarUsuario(this.username, this.password);
 
             // Valida para iniciar sesión
       if (username) {
@@ -73,7 +82,8 @@ export class LoginPage {
       } else {
         // Usuario inválido mostrar mensaje
         this.mostrarAlerta('Usuario o contraseña incorrectos.');
-      }}
+      }}*/
+    
 
   
 
